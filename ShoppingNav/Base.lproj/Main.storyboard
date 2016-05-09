@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2MK-a1-TPw">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="hk4-vb-2h9">
+            <objects>
+                <navigationController id="2MK-a1-TPw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P7v-QI-ZmF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jmN-4G-D3f" kind="relationship" relationship="rootViewController" id="YW9-ey-jR0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AgO-uI-Z0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32" y="354"/>
+        </scene>
+        <!--Sessions-->
+        <scene sceneID="U50-FE-pxh">
+            <objects>
+                <tableViewController id="jmN-4G-D3f" customClass="SessionTableViewController" customModule="ShoppingNav" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="qfj-Ng-4ul">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellSession" rowHeight="65" id="c7G-7F-TFM" customClass="SessionTableViewCell" customModule="ShoppingNav" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c7G-7F-TFM" id="eqI-Zv-JLI">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9u-gl-a5f">
+                                            <rect key="frame" x="49" y="11" width="349" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="sessionName" destination="k9u-gl-a5f" id="4yv-94-pny"/>
+                                    <segue destination="WHb-eN-hke" kind="show" identifier="showSession" id="zzn-ga-lNk"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jmN-4G-D3f" id="2cc-6K-4nj"/>
+                            <outlet property="delegate" destination="jmN-4G-D3f" id="DbD-KE-PmX"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Sessions" id="lo8-Zc-7Uh">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="pH8-UI-6cl">
+                                <connections>
+                                    <action selector="newSession:" destination="jmN-4G-D3f" id="mCy-qg-kM9"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="uf4-Wr-yUi">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="O6F-pr-qbA">
+                                    <rect key="frame" x="411" y="7" width="133" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="newSession:" destination="jmN-4G-D3f" eventType="touchUpInside" id="F3d-QZ-Dev"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oN5-ka-TVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="359"/>
+        </scene>
+        <!--WishList-->
+        <scene sceneID="jfv-vK-Ts5">
+            <objects>
+                <tableViewController id="WHb-eN-hke" customClass="WishListTableViewController" customModule="ShoppingNav" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Nd-lW-7MJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWishList" rowHeight="53" id="Rrn-Gn-0Ze" customClass="WishListTableViewCell" customModule="ShoppingNav" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="53"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="Rrn-Gn-0Ze" id="VQb-Yh-UAX">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="WishList Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d8-S0-iSA">
+                                            <rect key="frame" x="158" y="26" width="252" height="26"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8d8-S0-iSA" secondAttribute="trailing" constant="182" id="IR2-8I-anM"/>
+                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="top" secondItem="VQb-Yh-UAX" secondAttribute="topMargin" constant="19" id="Ypq-TT-3lj"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="8d8-S0-iSA" secondAttribute="bottom" constant="19" id="lP9-Z2-XrC"/>
+                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="leading" secondItem="VQb-Yh-UAX" secondAttribute="leadingMargin" constant="150" id="wq5-D2-fVr"/>
+                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="centerX" secondItem="VQb-Yh-UAX" secondAttribute="centerX" id="yrD-0e-Mdw"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="WishListName" destination="8d8-S0-iSA" id="d3G-FF-Vot"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WHb-eN-hke" id="dPz-ve-4Xa"/>
+                            <outlet property="delegate" destination="WHb-eN-hke" id="58f-OS-67h"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="WishList" id="5Hx-8h-ozg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E6p-SU-csf">
+                            <connections>
+                                <action selector="addWishList:" destination="WHb-eN-hke" id="AOk-2D-jw1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uz5-ig-Rf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1588" y="344"/>
+        </scene>
+    </scenes>
+</document>
