@@ -67,7 +67,6 @@
 		1997B7111CDFC5550097458E /* ShoppingNav */ = {
 			isa = PBXGroup;
 			children = (
-				1997B7121CDFC5550097458E /* AppDelegate.swift */,
 				1997B7341CDFC9B00097458E /* Model */,
 				1997B7331CDFC99B0097458E /* View */,
 				1997B7321CDFC97D0097458E /* Controller */,
@@ -99,6 +98,7 @@
 			children = (
 				1997B7381CDFE3170097458E /* WishList.swift */,
 				1997B72D1CDFC7FD0097458E /* Session.swift */,
+				1997B7121CDFC5550097458E /* AppDelegate.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -345,6 +345,7 @@
 				1997B7261CDFC5550097458E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

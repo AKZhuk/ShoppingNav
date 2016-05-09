@@ -98,7 +98,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         
         let alert = UIAlertController(title: "Session Name", message: "Enter a text", preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Pretty Molly"
+            textField.text = "Galileo"
         })
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
@@ -108,19 +108,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         }))
         self.presentViewController(alert, animated: true, completion: nil)
     }
-    /*@IBAction func 1newSession(sender: AnyObject) {
-        let alert = UIAlertController(title: "Session Name", message: "Enter a text", preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Pretty Molly"
-        })
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            let textField = alert.textFields![0] as UITextField
-            self.newSessionName = textField.text!
-            
-            
-        }))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }*/
+  
         func alertForSessionName() -> Void
     {
         
@@ -206,21 +194,12 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             if let navCon = destination as? UINavigationController {
                 destination = navCon.visibleViewController
             }
-           // let upcoming: WishListTableViewController = destination as! WishListTableViewController
+            let upcoming: WishListTableViewController = destination as! WishListTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-            //upcoming.session = self.sessions[indexPath.row]
+            upcoming.session = self.sessions[indexPath.row]
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         //Social
@@ -260,32 +239,4 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         
         return [deleteAction, shareAction, editAction]
     }
-    
-    
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

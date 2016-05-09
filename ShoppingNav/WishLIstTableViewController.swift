@@ -4,14 +4,6 @@
 //
 //  Created by 	Lesha Zhuk on 5/8/16.
 //  Copyright © 2016 	Lesha Zhuk. All rights reserved.
-//
-//
-//  WishListTableViewController.swift
-//  MollyNavigator
-//
-//  Created by Sak Andrey on 01.05.16.
-//  Copyright © 2016 Sak Andrey. All rights reserved.
-//
 
 import UIKit
 import CoreData
@@ -198,15 +190,6 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         //Social

@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -96,23 +95,20 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWishList" rowHeight="53" id="Rrn-Gn-0Ze" customClass="WishListTableViewCell" customModule="ShoppingNav" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="Rrn-Gn-0Ze" id="VQb-Yh-UAX">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rrn-Gn-0Ze" id="VQb-Yh-UAX">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="WishList Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d8-S0-iSA">
-                                            <rect key="frame" x="158" y="26" width="252" height="26"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WishList Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d8-S0-iSA">
+                                            <rect key="frame" x="158" y="26" width="312" height="26"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="8d8-S0-iSA" secondAttribute="trailing" constant="182" id="IR2-8I-anM"/>
-                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="top" secondItem="VQb-Yh-UAX" secondAttribute="topMargin" constant="19" id="Ypq-TT-3lj"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="8d8-S0-iSA" secondAttribute="bottom" constant="19" id="lP9-Z2-XrC"/>
-                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="leading" secondItem="VQb-Yh-UAX" secondAttribute="leadingMargin" constant="150" id="wq5-D2-fVr"/>
-                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="centerX" secondItem="VQb-Yh-UAX" secondAttribute="centerX" id="yrD-0e-Mdw"/>
+                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="centerY" secondItem="VQb-Yh-UAX" secondAttribute="centerY" id="Nu1-3a-OOo"/>
+                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="centerX" secondItem="VQb-Yh-UAX" secondAttribute="centerX" id="UM0-8u-MXc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
