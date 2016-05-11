@@ -21,6 +21,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
         if( session != nil){
             refresh()
         }
+        //title = session.session_name
     }
     
     @IBAction func addWishList(sender: AnyObject) {
@@ -184,7 +185,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showImages" {
-            //let upcoming: ImagesTableViewController = segue.destinationViewController as! ImagesTableViewController
+            let upcoming: CustomTableViewController = segue.destinationViewController as! CustomTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
             //upcoming.WishList = WishLists[indexPath.row]
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)

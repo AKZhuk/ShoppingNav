@@ -18,6 +18,11 @@
 		1997B7391CDFE3170097458E /* WishList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1997B7381CDFE3170097458E /* WishList.swift */; };
 		1997B73B1CDFE3D40097458E /* WishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1997B73A1CDFE3D40097458E /* WishListTableViewCell.swift */; };
 		1997B73D1CDFE69F0097458E /* WishLIstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1997B73C1CDFE69F0097458E /* WishLIstTableViewController.swift */; };
+		19DE960E1CE08C6200E7BAD9 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE960D1CE08C6100E7BAD9 /* Image.swift */; };
+		19FC59D11CE0BE3200ED974A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */; };
+		19FC59D31CE0C01E00ED974A /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */; };
+		19FC59D51CE1191A00ED974A /* AddImageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC59D41CE1191A00ED974A /* AddImageTableViewController.swift */; };
+		19FC59D71CE1E10A00ED974A /* AddImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC59D61CE1E10A00ED974A /* AddImageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		1997B7381CDFE3170097458E /* WishList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishList.swift; sourceTree = "<group>"; };
 		1997B73A1CDFE3D40097458E /* WishListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListTableViewCell.swift; sourceTree = "<group>"; };
 		1997B73C1CDFE69F0097458E /* WishLIstTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishLIstTableViewController.swift; sourceTree = "<group>"; };
+		19DE960D1CE08C6100E7BAD9 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
+		19FC59D41CE1191A00ED974A /* AddImageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddImageTableViewController.swift; sourceTree = "<group>"; };
+		19FC59D61CE1E10A00ED974A /* AddImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddImageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,10 @@
 		1997B7321CDFC97D0097458E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				19FC59D61CE1E10A00ED974A /* AddImageTableViewCell.swift */,
+				19FC59D41CE1191A00ED974A /* AddImageTableViewController.swift */,
+				19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */,
+				19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */,
 				1997B73C1CDFE69F0097458E /* WishLIstTableViewController.swift */,
 				1997B73A1CDFE3D40097458E /* WishListTableViewCell.swift */,
 				1997B7301CDFC9530097458E /* SessionTableViewCell.swift */,
@@ -96,9 +110,9 @@
 		1997B7341CDFC9B00097458E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				19DE960D1CE08C6100E7BAD9 /* Image.swift */,
 				1997B7381CDFE3170097458E /* WishList.swift */,
 				1997B72D1CDFC7FD0097458E /* Session.swift */,
-				1997B7121CDFC5550097458E /* AppDelegate.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -106,6 +120,7 @@
 		1997B7351CDFC9CC0097458E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				1997B7121CDFC5550097458E /* AppDelegate.swift */,
 				1997B71E1CDFC5550097458E /* LaunchScreen.storyboard */,
 				1997B7211CDFC5550097458E /* Info.plist */,
 				1997B71C1CDFC5550097458E /* Assets.xcassets */,
@@ -147,6 +162,7 @@
 				TargetAttributes = {
 					1997B70E1CDFC5550097458E = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = FRXWE876E5;
 					};
 				};
 			};
@@ -187,10 +203,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1997B7311CDFC9530097458E /* SessionTableViewCell.swift in Sources */,
+				19FC59D51CE1191A00ED974A /* AddImageTableViewController.swift in Sources */,
+				19DE960E1CE08C6200E7BAD9 /* Image.swift in Sources */,
 				1997B72E1CDFC7FD0097458E /* Session.swift in Sources */,
 				1997B73B1CDFE3D40097458E /* WishListTableViewCell.swift in Sources */,
 				1997B7391CDFE3170097458E /* WishList.swift in Sources */,
 				1997B71B1CDFC5550097458E /* ShoppingNav.xcdatamodeld in Sources */,
+				19FC59D31CE0C01E00ED974A /* CustomTableViewController.swift in Sources */,
+				19FC59D71CE1E10A00ED974A /* AddImageTableViewCell.swift in Sources */,
+				19FC59D11CE0BE3200ED974A /* CustomTableViewCell.swift in Sources */,
 				1997B72C1CDFC76A0097458E /* SessionsTableViewController.swift in Sources */,
 				1997B73D1CDFE69F0097458E /* WishLIstTableViewController.swift in Sources */,
 				1997B7131CDFC5550097458E /* AppDelegate.swift in Sources */,
@@ -308,9 +329,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ShoppingNav/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-2.ShoppingNav";
+				PRODUCT_BUNDLE_IDENTIFIER = al.ShoppingNav;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -319,9 +341,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ShoppingNav/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-2.ShoppingNav";
+				PRODUCT_BUNDLE_IDENTIFIER = al.ShoppingNav;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
