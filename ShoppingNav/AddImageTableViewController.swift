@@ -15,6 +15,7 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     
     @IBOutlet weak var imageView: UIImageView!
     
+    var WishLis: WishList!
     var image: Image!
     
     
@@ -35,7 +36,7 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.allowsEditing = false
-                imagePicker.sourceType = .PhotoLibrary
+                imagePicker.sourceType = .Camera
                 
                 self.presentViewController(imagePicker, animated: true, completion: nil)
             }
@@ -62,6 +63,7 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
             image = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: managedObjectContext) as! Image
             
             if let photoImage = imageView.image {
+                image.wishList = WishLis/////jfh
                 image.image = UIImagePNGRepresentation(photoImage)
             }
             

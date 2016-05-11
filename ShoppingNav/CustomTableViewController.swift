@@ -13,12 +13,16 @@ import CoreData
 class CustomTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var images: [Image] = []
+    
     var fetchResultController: NSFetchedResultsController!
+    
+    var WishLis: WishList!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let fetchRequest = NSFetchRequest(entityName: "Image")
+        let ImageWishListPredicate = NSPredicate(format: "wishList == %@", WishLis)
+      fetchRequest.predicate = ImageWishListPredicate
         let sortDescriptor = NSSortDescriptor(key: "image", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
@@ -32,6 +36,27 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             } catch {
                 print(error)
             }
+            
+            
+            /* let fetchRequest = NSFetchRequest(entityName: "WishList")
+             let WishListSessionPredicate = NSPredicate(format: "session == %@", session)
+             fetchRequest.predicate = WishListSessionPredicate
+             let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+             fetchRequest.sortDescriptors = [sortDescriptor]
+             
+             if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+             fetchResultController.delegate = self
+             
+             do {
+             try fetchResultController.performFetch()
+             WishLists = fetchResultController.fetchedObjects as! [WishList]
+             } catch {
+             print(error)
+             }
+             }
+             self.tableView.reloadData()*/
+
         }
         
         
@@ -140,6 +165,19 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         
         return [deleteAction, /*shareAction*/]
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showCamera" {
+            var destination = segue.destinationViewController as? UIViewController
+            if let navCon = destination as? UINavigationController {
+                destination = navCon.visibleViewController
+            }
+            let upcoming: AddImageTableViewController = destination as! AddImageTableViewController
+    
+            upcoming.WishLis = WishLis
+        }
+    }
+
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
