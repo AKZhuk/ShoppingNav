@@ -142,7 +142,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showCamera" {
+        if segue.identifier == "ShowCamera" {
             var destination = segue.destinationViewController as? UIViewController
             if let navCon = destination as? UINavigationController {
                 destination = navCon.visibleViewController
