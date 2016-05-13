@@ -20,6 +20,6 @@
     <elements>
         <element name="Image" positionX="412" positionY="-49" width="128" height="105"/>
         <element name="Session" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="WishList" positionX="124" positionY="-33" width="128" height="103"/>
+        <element name="WishList" positionX="124" positionY="-33" width="128" height="105"/>
     </elements>
 </model>

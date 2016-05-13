@@ -15,13 +15,14 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     
     @IBOutlet weak var imageView: UIImageView!
     
-    var WishLis: WishList!
+    var wishList: WishList!
     var image: Image!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("ww\(wishList)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,7 +37,7 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.allowsEditing = false
-                imagePicker.sourceType = .Camera
+                imagePicker.sourceType = .PhotoLibrary
                 
                 self.presentViewController(imagePicker, animated: true, completion: nil)
             }
@@ -62,13 +63,16 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
             image = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: managedObjectContext) as! Image
             
-            if let photoImage = imageView.image {
-                image.wishList = WishLis/////jfh
-                image.image = UIImagePNGRepresentation(photoImage)
-            }
+            //if let photoImage = imageView.image {
+            
+                image.image = UIImagePNGRepresentation(imageView.image!)
+                print("lol=\(wishList)")
+                image.wishList = wishList
+            //}
             
             do {
                 try managedObjectContext.save()
+                managedObjectContext.refreshAllObjects()
             } catch {
                 print(error)
                 return

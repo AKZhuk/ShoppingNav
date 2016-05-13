@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShoppingNav/WishLIstTableViewController.swift"
-            timestampString = "484489682.610421"
+            timestampString = "484784530.152489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "addWishList(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShoppingNav/CustomTableViewController.swift"
-            timestampString = "484513569.229729"
+            timestampString = "484829382.110153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "tableView(_:editActionsForRowAtIndexPath:)"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "controller(_:didChangeObject:atIndexPath:forChangeType:newIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -81,6 +81,131 @@
             endingLineNumber = "20"
             landmarkName = "AddImageTableViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShoppingNav/AddImageTableViewController.swift"
+            timestampString = "484731377.987026"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShoppingNav/WishLIstTableViewController.swift"
+            timestampString = "484784413.148736"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShoppingNav/WishLIstTableViewController.swift"
+            timestampString = "484784591.031481"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "WishListTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShoppingNav.WishListTableViewController.WishLists.getter : Swift.Array&lt;ShoppingNav.WishList&gt;"
+                  moduleName = "ShoppingNav"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leshazhuk/Documents/ShoppingNav/ShoppingNav/WishLIstTableViewController.swift"
+                  timestampString = "484784591.246344"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShoppingNav.WishListTableViewController.WishLists.setter : Swift.Array&lt;ShoppingNav.WishList&gt;"
+                  moduleName = "ShoppingNav"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leshazhuk/Documents/ShoppingNav/ShoppingNav/WishLIstTableViewController.swift"
+                  timestampString = "484784591.260776"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShoppingNav.WishListTableViewController.init (style : __C.UITableViewStyle) -&gt; ShoppingNav.WishListTableViewController"
+                  moduleName = "ShoppingNav"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leshazhuk/Documents/ShoppingNav/ShoppingNav/WishLIstTableViewController.swift"
+                  timestampString = "484784591.261041"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShoppingNav.WishListTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; ShoppingNav.WishListTableViewController"
+                  moduleName = "ShoppingNav"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leshazhuk/Documents/ShoppingNav/ShoppingNav/WishLIstTableViewController.swift"
+                  timestampString = "484784591.261179"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "58">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShoppingNav.WishListTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;ShoppingNav.WishListTableViewController&gt;"
+                  moduleName = "ShoppingNav"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leshazhuk/Documents/ShoppingNav/ShoppingNav/WishLIstTableViewController.swift"
+                  timestampString = "484784591.261314"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

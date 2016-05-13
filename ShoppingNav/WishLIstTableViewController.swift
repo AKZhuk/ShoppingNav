@@ -11,6 +11,7 @@ import CoreData
 class WishListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var WishLists: [WishList] = []
+    
     var fetchResultController: NSFetchedResultsController!
     
     @IBOutlet weak var WishListLabel: UILabel!
@@ -18,6 +19,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if( session != nil){
             refresh()
         }
@@ -59,6 +61,8 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             let WishListContext = NSEntityDescription.insertNewObjectForEntityForName("WishList", inManagedObjectContext: managedObjectContext) as! WishList
             
             WishListContext.name = WishListName
+            WishListContext.id = WishLists.count
+            print("aaa\(WishLists.count)")///delete
             WishListContext.session = session
             
             do {
@@ -89,9 +93,8 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
         let fetchRequest = NSFetchRequest(entityName: "WishList")
         let WishListSessionPredicate = NSPredicate(format: "session == %@", session)
         fetchRequest.predicate = WishListSessionPredicate
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
@@ -99,15 +102,13 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             do {
                 try fetchResultController.performFetch()
                 WishLists = fetchResultController.fetchedObjects as! [WishList]
+                print("\(WishLists)")
             } catch {
                 print(error)
             }
         }
         self.tableView.reloadData()
     }
-    
-    
-    
     
     func mistakeAlert(mistakeText: String)
     {
@@ -133,8 +134,8 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
     func editWishList(editSessionName: String, indexPath: NSIndexPath)
     {
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-            let sessionToEdit = self.fetchResultController.objectAtIndexPath(indexPath) as! WishList
-            sessionToEdit.setValue(editWishListName, forKey: "name")
+            let wishListToEdit = self.fetchResultController.objectAtIndexPath(indexPath) as! WishList
+            wishListToEdit.setValue(editWishListName, forKey: "name")
             
             do {
                 try managedObjectContext.save()
@@ -143,11 +144,11 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             }
         }
     }
-    
+   
     func alertEditSession(defaultText: String)
     {
         
-        let alert = UIAlertController(title: "Session Name", message: "Enter a text", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Wish List      Name", message: "Enter a text", preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
             textField.text = defaultText
         })
@@ -190,19 +191,11 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
              if let navCon = destination as? UINavigationController {
              destination = navCon.visibleViewController
              }
-            /*
-             let upcoming: CustomTableViewController = destination as! CustomTableViewController
-             let indexPath = self.tableView.indexPathForSelectedRow!
-             upcoming.Wish = self.WishLists[indexPath.row]
-             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            let upcoming:CustomTableViewController = destination as! CustomTableViewController
             
-            */
-            
-            let upcoming: CustomTableViewController = segue.destinationViewController as! CustomTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-            let a = WishLists[indexPath.row]
-            print("\(a)")
-            upcoming.WishLis = WishLists[indexPath.row]
+            
+            upcoming.wishList = self.WishLists[indexPath.row]
             
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }

@@ -16,12 +16,18 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     
     var fetchResultController: NSFetchedResultsController!
     
-    var WishLis: WishList!
+    var wishList: WishList!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("c=\(wishList)")
+        if( wishList !== nil){
+            print("wishList error")
+        }
+
         let fetchRequest = NSFetchRequest(entityName: "Image")
-        let ImageWishListPredicate = NSPredicate(format: "wishList == %@", WishLis)
+        let ImageWishListPredicate = NSPredicate(format: "wishList = %@", wishList)
       fetchRequest.predicate = ImageWishListPredicate
         let sortDescriptor = NSSortDescriptor(key: "image", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -36,39 +42,10 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             } catch {
                 print(error)
             }
-            
-            
-            /* let fetchRequest = NSFetchRequest(entityName: "WishList")
-             let WishListSessionPredicate = NSPredicate(format: "session == %@", session)
-             fetchRequest.predicate = WishListSessionPredicate
-             let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-             fetchRequest.sortDescriptors = [sortDescriptor]
-             
-             if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-             fetchResultController.delegate = self
-             
-             do {
-             try fetchResultController.performFetch()
-             WishLists = fetchResultController.fetchedObjects as! [WishList]
-             } catch {
-             print(error)
-             }
-             }
-             self.tableView.reloadData()*/
-
         }
-        
-        
-        
         
         // Удалить title у кнопки  back
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        
-        // Самомасштабирование
-        tableView.estimatedRowHeight = 40.0
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -155,9 +132,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
                     print(error)
                 }
             }
-            
-            
-            
+
         })
         
         //shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
@@ -173,8 +148,8 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
                 destination = navCon.visibleViewController
             }
             let upcoming: AddImageTableViewController = destination as! AddImageTableViewController
-    
-            upcoming.WishLis = WishLis
+    	
+            upcoming.wishList = wishList
         }
     }
 
@@ -189,10 +164,5 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             }
         }
     }*/
-    
-    @IBAction func unwindToRestaurants(segue: UIStoryboardSegue) {
-        
-    }
-    
 }
 

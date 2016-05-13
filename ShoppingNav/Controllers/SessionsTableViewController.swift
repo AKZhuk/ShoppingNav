@@ -86,7 +86,12 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             
             do {
                 try fetchResultController.performFetch()
+            
+               
                 sessions = fetchResultController.fetchedObjects as! [Session]
+            
+            
+                
             } catch {
                 print(error)
             }
@@ -196,6 +201,10 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             }
             let upcoming: WishListTableViewController = destination as! WishListTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
+            
+//            let a = self.sessions[indexPath.row]
+//            print("a=\(a)")
+            
             upcoming.session = self.sessions[indexPath.row]
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }

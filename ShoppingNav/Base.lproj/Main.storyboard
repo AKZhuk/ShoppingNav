@@ -36,13 +36,13 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c7G-7F-TFM" id="eqI-Zv-JLI">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="64.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9u-gl-a5f">
                                             <rect key="frame" x="49" y="11" width="349" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -68,7 +68,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" id="uf4-Wr-yUi">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="O6F-pr-qbA">
-                                    <rect key="frame" x="410.5" y="7" width="133" height="30"/>
+                                    <rect key="frame" x="411" y="7" width="133" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Button"/>
                                     <connections>
@@ -88,7 +88,7 @@
         <scene sceneID="4eH-Rl-uS2">
             <objects>
                 <tableViewController id="O05-oJ-aZN" customClass="CustomTableViewController" customModule="ShoppingNav" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="265" sectionHeaderHeight="28" sectionFooterHeight="28" id="aZQ-Cn-vC5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="322" sectionHeaderHeight="28" sectionFooterHeight="28" id="aZQ-Cn-vC5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -106,22 +106,22 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="265" id="deM-h4-Wr4" customClass="CustomTableViewCell" customModule="ShoppingNav" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="265"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="322" id="deM-h4-Wr4" customClass="CustomTableViewCell" customModule="ShoppingNav" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="600" height="322"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="deM-h4-Wr4" id="Th0-cE-CCL">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="264.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="321"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="photoalbum" translatesAutoresizingMaskIntoConstraints="NO" id="r49-Jr-VsH">
-                                            <rect key="frame" x="31" y="32" width="600" height="300"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r49-Jr-VsH">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="321"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="r49-Jr-VsH" firstAttribute="leading" secondItem="Th0-cE-CCL" secondAttribute="leadingMargin" constant="39" id="Vqz-Za-3no"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="r49-Jr-VsH" secondAttribute="bottom" constant="11.5" id="XBm-71-nSf"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="r49-Jr-VsH" secondAttribute="trailing" constant="8" id="gzM-gm-jVL"/>
-                                        <constraint firstItem="r49-Jr-VsH" firstAttribute="top" secondItem="Th0-cE-CCL" secondAttribute="topMargin" constant="26" id="mlW-Vh-O8m"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="r49-Jr-VsH" secondAttribute="bottom" constant="5" id="B46-Mf-W35"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="r49-Jr-VsH" secondAttribute="trailing" constant="5" id="H8c-lf-7IY"/>
+                                        <constraint firstItem="r49-Jr-VsH" firstAttribute="leading" secondItem="Th0-cE-CCL" secondAttribute="leadingMargin" constant="5" id="Z2n-GC-fF9"/>
+                                        <constraint firstItem="r49-Jr-VsH" firstAttribute="top" secondItem="Th0-cE-CCL" secondAttribute="topMargin" constant="5" id="bno-nb-f2h"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -135,6 +135,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="M7d-PJ-xhx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEP-ug-ud6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -155,19 +156,19 @@
                                         <rect key="frame" x="0.0" y="64" width="600" height="346"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uZk-y9-h2e" id="Ece-wx-sYp">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="345.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="345"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="photoalbum" translatesAutoresizingMaskIntoConstraints="NO" id="HIu-l3-nGQ">
-                                                    <rect key="frame" x="24" y="8" width="574" height="329.5"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HIu-l3-nGQ">
+                                                    <rect key="frame" x="26" y="7" width="574" height="330"/>
+                                                    <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="topMargin" secondItem="HIu-l3-nGQ" secondAttribute="top" id="2vf-Xh-oDa"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="HIu-l3-nGQ" secondAttribute="trailing" constant="14" id="FFV-Mg-vQ2"/>
-                                                <constraint firstItem="HIu-l3-nGQ" firstAttribute="leading" secondItem="Ece-wx-sYp" secondAttribute="leadingMargin" constant="16" id="odV-7l-ms2"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="HIu-l3-nGQ" secondAttribute="bottom" constant="16.5" id="xEE-bg-3N9"/>
+                                                <constraint firstItem="HIu-l3-nGQ" firstAttribute="bottom" secondItem="Ece-wx-sYp" secondAttribute="bottomMargin" id="9nh-bG-dbj"/>
+                                                <constraint firstItem="HIu-l3-nGQ" firstAttribute="leading" secondItem="Ece-wx-sYp" secondAttribute="leadingMargin" constant="18" id="R5D-iD-1cT"/>
+                                                <constraint firstAttribute="trailing" secondItem="HIu-l3-nGQ" secondAttribute="trailing" id="xiW-co-WcY"/>
+                                                <constraint firstItem="HIu-l3-nGQ" firstAttribute="centerY" secondItem="Ece-wx-sYp" secondAttribute="centerY" id="yDE-jg-aUf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -175,7 +176,7 @@
                                         <rect key="frame" x="0.0" y="410" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2JE-rl-lMi" id="CDw-Jt-cGC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -183,7 +184,7 @@
                                         <rect key="frame" x="0.0" y="454" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="80R-HB-ocC" id="aki-KR-k7o">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -232,7 +233,7 @@
             </objects>
             <point key="canvasLocation" x="1642" y="-1061"/>
         </scene>
-        <!--WishList-->
+        <!--WishLists-->
         <scene sceneID="jfv-vK-Ts5">
             <objects>
                 <tableViewController id="WHb-eN-hke" customClass="WishListTableViewController" customModule="ShoppingNav" sceneMemberID="viewController">
@@ -241,17 +242,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellWishList" rowHeight="58" id="Rrn-Gn-0Ze" customClass="WishListTableViewCell" customModule="ShoppingNav" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellWishList" rowHeight="58" id="Rrn-Gn-0Ze" customClass="WishListTableViewCell" customModule="ShoppingNav" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rrn-Gn-0Ze" id="VQb-Yh-UAX">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="57"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WishList Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d8-S0-iSA">
-                                            <rect key="frame" x="159" y="26" width="312" height="26"/>
+                                            <rect key="frame" x="159" y="23" width="312" height="26"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -262,7 +263,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="WishListName" destination="8d8-S0-iSA" id="Og6-i4-8OV"/>
-                                    <segue destination="O05-oJ-aZN" kind="show" identifier="ShowImage" id="WBK-Z5-bJX"/>
+                                    <segue destination="O05-oJ-aZN" kind="show" identifier="showImages" id="BpX-FI-ODc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -271,7 +272,7 @@
                             <outlet property="delegate" destination="WHb-eN-hke" id="58f-OS-67h"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="WishList" id="5Hx-8h-ozg">
+                    <navigationItem key="navigationItem" title="WishLists" id="5Hx-8h-ozg">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="E6p-SU-csf">
                             <connections>
                                 <action selector="addWishList:" destination="WHb-eN-hke" id="AOk-2D-jw1"/>
@@ -281,10 +282,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uz5-ig-Rf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1588" y="344"/>
+            <point key="canvasLocation" x="1590" y="384"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="photoalbum" width="84" height="84"/>
-    </resources>
 </document>
