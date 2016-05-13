@@ -66,15 +66,10 @@
                                     <action selector="newSession:" destination="jmN-4G-D3f" id="mCy-qg-kM9"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem style="plain" id="uf4-Wr-yUi">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="O6F-pr-qbA">
-                                    <rect key="frame" x="411" y="7" width="133" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <connections>
-                                        <action selector="newSession:" destination="jmN-4G-D3f" eventType="touchUpInside" id="F3d-QZ-Dev"/>
-                                    </connections>
-                                </button>
+                            <barButtonItem style="plain" systemItem="action" id="uf4-Wr-yUi">
+                                <connections>
+                                    <action selector="twitterButtonPushed:" destination="jmN-4G-D3f" id="aPa-gh-NW1"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>

@@ -11,7 +11,6 @@ import CoreData
 class WishListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var WishLists: [WishList] = []
-    
     var fetchResultController: NSFetchedResultsController!
     
     @IBOutlet weak var WishListLabel: UILabel!
@@ -62,7 +61,6 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             
             WishListContext.name = WishListName
             WishListContext.id = WishLists.count
-            print("aaa\(WishLists.count)")///delete
             WishListContext.session = session
             
             do {
@@ -102,7 +100,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             do {
                 try fetchResultController.performFetch()
                 WishLists = fetchResultController.fetchedObjects as! [WishList]
-                print("\(WishLists)")
+               // print("\(WishLists)")
             } catch {
                 print(error)
             }

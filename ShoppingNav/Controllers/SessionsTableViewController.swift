@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Social
 
 class SessionTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
@@ -210,6 +211,20 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         }
     }
     
+    @IBAction func twitterButtonPushed(sender: UIBarButtonItem) {
+        
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+            var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            twitterSheet.setInitialText("Share on Twitter")
+            self.presentViewController(twitterSheet, animated: true, completion: nil)
+        } else {
+            var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        
+    }
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         //Social
         let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in

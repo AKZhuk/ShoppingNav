@@ -21,7 +21,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("c=\(wishList)")
+        //print("c=\(wishList)")
         if( wishList !== nil){
             print("wishList error")
         }
@@ -29,7 +29,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         let fetchRequest = NSFetchRequest(entityName: "Image")
         let ImageWishListPredicate = NSPredicate(format: "wishList = %@", wishList)
       fetchRequest.predicate = ImageWishListPredicate
-        let sortDescriptor = NSSortDescriptor(key: "image", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
@@ -111,11 +111,17 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     // MARK: - Table view delegate
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         //Social
-        /*let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
-            let defaultText = "Just checking in at " + self.images[indexPath.row].name
-            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+        let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
+            let shareImages =  self.images[indexPath.row].image!
+            var shareImage=[NSData]()
+           
+            for _ in self.images {
+                shareImage.append(self.images[indexPath.row].image!)
+            }
+
+            let activityController = UIActivityViewController(activityItems: [shareImages], applicationActivities: nil)
             self.presentViewController(activityController, animated: true, completion: nil)
-        })*/
+        })
         
         //Delete
         let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {(actin, indexPath) -> Void in
@@ -135,10 +141,10 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
 
         })
         
-        //shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
+        shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
         deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 202.0/255.0, blue: 203.0/255.0, alpha: 1.0)
         
-        return [deleteAction, /*shareAction*/]
+        return [deleteAction, shareAction]
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

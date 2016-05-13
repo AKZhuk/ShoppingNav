@@ -11,6 +11,7 @@ import CoreData
 
 class Image: NSManagedObject {
     @NSManaged var image: NSData?
+    @NSManaged var id: NSNumber?
     //@NSManaged var lantitude: NSNumber
     //@NSManaged var lontitude: NSNumber
     @NSManaged var wishList: WishList

@@ -17,7 +17,7 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     
     var wishList: WishList!
     var image: Image!
-    
+    let date : Double = NSDate().timeIntervalSince1970
     
     
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     
     // MARK: - Action methods //Добавили кнопки
     
-    
+
     
     @IBAction func save(sender: UIBarButtonItem) {
      
@@ -66,16 +66,21 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
             //if let photoImage = imageView.image {
             
                 image.image = UIImagePNGRepresentation(imageView.image!)
-                print("lol=\(wishList)")
+                //print("lol=\(wishList)")
                 image.wishList = wishList
+                image.id = date as NSNumber
+            //image.id = Data as NSNumber
             //}
             
             do {
+                
                 try managedObjectContext.save()
-                managedObjectContext.refreshAllObjects()
+                print("abc")
+                //managedObjectContext.refreshAllObjects()
             } catch {
                 print(error)
                 return
+                
             }
         }
         
