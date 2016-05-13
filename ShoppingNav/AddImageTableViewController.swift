@@ -7,8 +7,9 @@
 //
 import UIKit
 import CoreData
+import CoreLocation
 
-class AddImageTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddImageTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
     //*** Этот класс мы полностью настроили на запись/прием введенной информации. *** Первым делом добавим аутлеты для всех объектов взаимодействия
     
     
@@ -18,17 +19,14 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     var wishList: WishList!
     var image: Image!
     let date : Double = NSDate().timeIntervalSince1970
-    
+    var locationManager = CLLocationManager()
+    var manager:CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ww\(wishList)")
+
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -56,7 +54,16 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     
     // MARK: - Action methods //Добавили кнопки
     
-
+    func location()->(Double,Double){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        let lat = locationManager.location?.coordinate.latitude
+        let lon = locationManager.location?.coordinate.longitude
+        return (lat!,lon!)
+    }
     
     @IBAction func save(sender: UIBarButtonItem) {
      
@@ -66,16 +73,17 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
             //if let photoImage = imageView.image {
             
                 image.image = UIImagePNGRepresentation(imageView.image!)
-                //print("lol=\(wishList)")
+                let photoLocation=location()
+                //image.lantitude=photoLocation.0
+                //image.lontitude=photoLocation.1
                 image.wishList = wishList
                 image.id = date as NSNumber
-            //image.id = Data as NSNumber
+            
             //}
             
             do {
                 
                 try managedObjectContext.save()
-                print("abc")
                 //managedObjectContext.refreshAllObjects()
             } catch {
                 print(error)
