@@ -19,7 +19,9 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("aaaa=\(session)")
+        
+        
+        
         if( session != nil){
             refresh()
         }
@@ -197,7 +199,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             
             upcoming.wishList = self.WishLists[indexPath.row]
             upcoming.sessionID=self.session.id
-            //upcoming.session=session.self()
+            upcoming.session=session
             
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }

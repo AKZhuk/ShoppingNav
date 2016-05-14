@@ -15,15 +15,14 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     var images: [Image] = []
     
     var fetchResultController: NSFetchedResultsController!
-    var session = Session!.self
+    var session :Session!
     var wishList: WishList!
     var sessionID:  NSNumber!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print("jsdkjdsgks\(sessionID)")
-        //print("c=\(wishList)")
+
         if( wishList == nil){
             print("wishList error")
         }
@@ -53,7 +52,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     
     
     @IBAction func shomCamera(sender: AnyObject) {
-       var lol = AddImageTableViewController()
+       _ = AddImageTableViewController()
         //lol.ShowCamera()
 //        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
 //            let imagePicker = UIImagePickerController()
@@ -71,11 +70,6 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         
         navigationController?.hidesBarsOnSwipe = true
         prefersStatusBarHidden()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
@@ -131,11 +125,14 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         //Social
         let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
             let shareImages =  self.images[indexPath.row].image!
-            var shareImage=[NSData]()
-           
-            for _ in self.images {
-                shareImage.append(self.images[indexPath.row].image!)
-            }
+//           var shareImage=[AnyObject]()
+//
+//            for image in self.images{
+//              shareImage.append(self.images[indexPath.row].image!)
+//            }
+
+            
+            
 
             let activityController = UIActivityViewController(activityItems: [shareImages], applicationActivities: nil)
             self.presentViewController(activityController, animated: true, completion: nil)
@@ -175,6 +172,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     	
             upcoming.wishList = wishList
             upcoming.sessionID =  self.sessionID
+            upcoming.session =  session
         }
     }
 

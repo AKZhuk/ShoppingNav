@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1509" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15A284" minimumToolsVersion="Automatic">
     <entity name="Image" representedClassName=".Image" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="lantitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="lontitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sessionID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="images" inverseEntity="Session" syncable="YES"/>
         <relationship name="wishList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WishList" inverseName="image" inverseEntity="WishList" syncable="YES"/>
     </entity>
     <entity name="Session" representedClassName=".Session" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="session_name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="session" inverseEntity="Image" syncable="YES"/>
         <relationship name="wishLists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WishList" inverseName="session" inverseEntity="WishList" syncable="YES"/>
     </entity>
     <entity name="WishList" representedClassName=".WishList" syncable="YES">
@@ -20,8 +22,8 @@
         <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="wishLists" inverseEntity="Session" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Image" positionX="412" positionY="-49" width="128" height="133"/>
-        <element name="Session" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Image" positionX="412" positionY="-49" width="128" height="148"/>
+        <element name="Session" positionX="-63" positionY="-18" width="128" height="103"/>
         <element name="WishList" positionX="160" positionY="162" width="128" height="105"/>
     </elements>
 </model>

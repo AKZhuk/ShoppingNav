@@ -15,10 +15,11 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     
     var wishList: WishList!
     var image: Image!
+    var session: Session!
     var sessionID:  NSNumber!
     let date : Double = NSDate().timeIntervalSince1970
-    var locationManager = CLLocationManager()
-    var manager:CLLocationManager!
+//    var locationManager = CLLocationManager()
+//    var manager:CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +80,6 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     
     // MARK: - UIImagePickerControllerDelegate methods
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        var ima = info[UIImagePickerControllerOriginalImage] as? UIImage
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         imageView.contentMode = UIViewContentMode.ScaleAspectFill
         imageView.clipsToBounds = true
@@ -88,13 +88,19 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     // MARK: - Action methods //Добавили кнопки
-//    
+    
 //    func location()->(Double,Double){
 //        locationManager = CLLocationManager()
 //        locationManager.delegate = self
 //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
 //        locationManager.requestAlwaysAuthorization()
 //        locationManager.startUpdatingLocation()
+//    if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
+//    CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
+//    
+//    currentLocation = locManager.location
+//    
+//    }
 //        let lat = locationManager.location?.coordinate.latitude
 //        let lon = locationManager.location?.coordinate.longitude
 //        return (lat!,lon!)
@@ -105,18 +111,15 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
             image = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: managedObjectContext) as! Image
             
-            //if let photoImage = imageView.image {
-            
+            //let photoLocation=location()
                 image.image = UIImagePNGRepresentation(imageView.image!)
-//                let photoLocation=location()
+              //  print("\(photoLocation)")
 //                image.lantitude=photoLocation.0
 //                image.lontitude=photoLocation.1
                 image.wishList = wishList
-                image.sessionID = sessionID
-                image.id = date as NSNumber
-            //image.session = session
+                image.session = session
+                //image.id = date as NSNumber
             
-            //}
             
             do {
                 

@@ -14,5 +14,5 @@ class Session: NSManagedObject {
     @NSManaged var id: NSNumber
     @NSManaged var session_name: String
     @NSManaged var wishLists: NSSet?
-    
+    @NSManaged var images: NSSet?
 }

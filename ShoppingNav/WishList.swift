@@ -15,4 +15,5 @@ class WishList: NSManagedObject {
     @NSManaged var id: NSNumber
     @NSManaged var session: Session
     @NSManaged var image: NSSet?
+    
 }

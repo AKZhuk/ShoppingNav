@@ -14,6 +14,8 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
 
     
     var sessions: [Session] = []
+    var images: [Image] = []
+    var shareImage: [NSData]=[]
     var fetchResultController: NSFetchedResultsController!
     
     override func viewDidLoad() {
@@ -196,15 +198,13 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showSession" {
-            var destination = segue.destinationViewController as? UIViewController
-            if let navCon = destination as? UINavigationController {
+        var destination = segue.destinationViewController as? UIViewController
+          if let navCon = destination as? UINavigationController {
                 destination = navCon.visibleViewController
             }
             let upcoming: WishListTableViewController = destination as! WishListTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-            
-//            let a = self.sessions[indexPath.row].id
-//            print("a=\(a)")
+            print("(\(sessions[indexPath.row]))")
             upcoming.sessionID=self.sessions[indexPath.row].id
             upcoming.session = self.sessions[indexPath.row]
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -214,11 +214,11 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     @IBAction func twitterButtonPushed(sender: UIBarButtonItem) {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
-            var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             twitterSheet.setInitialText("Share on Twitter")
             self.presentViewController(twitterSheet, animated: true, completion: nil)
         } else {
-            var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
@@ -229,7 +229,35 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         //Social
         let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
             let defaultText = "Just checking in at " + self.sessions[indexPath.row].session_name
-            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            
+            
+            
+            let fetchRequest = NSFetchRequest(entityName: "Image")
+            let ImageWishListPredicate = NSPredicate(format: "session = %@", self.sessions[indexPath.row])
+            fetchRequest.predicate = ImageWishListPredicate
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            
+            if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+                self.fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+                self.fetchResultController.delegate = self
+                
+                do {
+                    try self.fetchResultController.performFetch()
+                    
+                    self.images = self.fetchResultController.fetchedObjects as! [Image]
+                    
+                    
+                } catch {
+                    print(error)
+                }
+            }
+
+            for image in self.images{
+                self.shareImage.append(self.images[indexPath.row].image!)
+            }
+
+            let activityController = UIActivityViewController(activityItems: self.shareImage, applicationActivities: nil)
             self.presentViewController(activityController, animated: true, completion: nil)
         })
         
