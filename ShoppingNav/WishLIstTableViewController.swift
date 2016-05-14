@@ -15,10 +15,11 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
     
     @IBOutlet weak var WishListLabel: UILabel!
     var session: Session!
+    var sessionID: NSNumber!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("aaaa=\(session)")
         if( session != nil){
             refresh()
         }
@@ -115,7 +116,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
         self.presentViewController(alert, animated: true, completion: nil)
     }
     var indexEditWishList: NSIndexPath?
-    var editWishListName = ""
+    var editWishListName = "111"
         {
         didSet{
             if(editWishListName == ""){
@@ -179,6 +180,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellWishList", forIndexPath: indexPath) as! WishListTableViewCell
         cell.WishListName.text = self.WishLists[indexPath.row].name
+        
         return cell
     }
     
@@ -194,6 +196,8 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             let indexPath = self.tableView.indexPathForSelectedRow!
             
             upcoming.wishList = self.WishLists[indexPath.row]
+            upcoming.sessionID=self.session.id
+            //upcoming.session=session.self()
             
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
@@ -232,7 +236,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
         })
         
         shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 202.0/255.0, blue: 203.0/255.0, alpha: 1.0)
+        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
         editAction.backgroundColor  = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 3.0/255.0, alpha: 1.0)
         
         return [deleteAction, shareAction, editAction]

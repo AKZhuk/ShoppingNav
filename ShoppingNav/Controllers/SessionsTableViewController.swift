@@ -203,9 +203,9 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             let upcoming: WishListTableViewController = destination as! WishListTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
             
-//            let a = self.sessions[indexPath.row]
+//            let a = self.sessions[indexPath.row].id
 //            print("a=\(a)")
-            
+            upcoming.sessionID=self.sessions[indexPath.row].id
             upcoming.session = self.sessions[indexPath.row]
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }

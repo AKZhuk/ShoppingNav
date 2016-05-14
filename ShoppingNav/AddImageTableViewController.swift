@@ -10,14 +10,12 @@ import CoreData
 import CoreLocation
 
 class AddImageTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
-    //*** Этот класс мы полностью настроили на запись/прием введенной информации. *** Первым делом добавим аутлеты для всех объектов взаимодействия
-    
-    
     
     @IBOutlet weak var imageView: UIImageView!
     
     var wishList: WishList!
     var image: Image!
+    var sessionID:  NSNumber!
     let date : Double = NSDate().timeIntervalSince1970
     var locationManager = CLLocationManager()
     var manager:CLLocationManager!
@@ -27,6 +25,42 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
 
     }
     
+//    func ShowCamera(){
+//        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+//            let imagePicker = UIImagePickerController()
+//            imagePicker.delegate = self
+//            imagePicker.allowsEditing = false
+//            imagePicker.sourceType = .PhotoLibrary
+//            
+//            self.presentViewController(imagePicker, animated: true, completion: nil)
+//            
+//            if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+//                image = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: managedObjectContext) as! Image
+//                
+//                //if let photoImage = imageView.image {
+//                
+//                image.image = UIImagePNGRepresentation(ima!)
+//                //                let photoLocation=location()
+//                //                image.lantitude=photoLocation.0
+//                //                image.lontitude=photoLocation.1
+//                image.wishList = wishList
+//                image.id = date as NSNumber
+//                
+//                //}
+//                
+//                do {
+//                    
+//                    try managedObjectContext.save()
+//                    
+//                } catch {
+//                    print(error)
+//                    return
+//                    
+//                }
+//
+//            
+//        }
+//    }
     
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -45,6 +79,7 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     
     // MARK: - UIImagePickerControllerDelegate methods
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        var ima = info[UIImagePickerControllerOriginalImage] as? UIImage
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         imageView.contentMode = UIViewContentMode.ScaleAspectFill
         imageView.clipsToBounds = true
@@ -53,17 +88,17 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     // MARK: - Action methods //Добавили кнопки
-    
-    func location()->(Double,Double){
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
-        let lat = locationManager.location?.coordinate.latitude
-        let lon = locationManager.location?.coordinate.longitude
-        return (lat!,lon!)
-    }
+//    
+//    func location()->(Double,Double){
+//        locationManager = CLLocationManager()
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.requestAlwaysAuthorization()
+//        locationManager.startUpdatingLocation()
+//        let lat = locationManager.location?.coordinate.latitude
+//        let lon = locationManager.location?.coordinate.longitude
+//        return (lat!,lon!)
+//    }
     
     @IBAction func save(sender: UIBarButtonItem) {
      
@@ -73,18 +108,20 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
             //if let photoImage = imageView.image {
             
                 image.image = UIImagePNGRepresentation(imageView.image!)
-                let photoLocation=location()
-                //image.lantitude=photoLocation.0
-                //image.lontitude=photoLocation.1
+//                let photoLocation=location()
+//                image.lantitude=photoLocation.0
+//                image.lontitude=photoLocation.1
                 image.wishList = wishList
+                image.sessionID = sessionID
                 image.id = date as NSNumber
+            //image.session = session
             
             //}
             
             do {
                 
                 try managedObjectContext.save()
-                //managedObjectContext.refreshAllObjects()
+                
             } catch {
                 print(error)
                 return

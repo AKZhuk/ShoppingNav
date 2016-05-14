@@ -10,19 +10,21 @@
 import UIKit
 import CoreData
 
-class CustomTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class CustomTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate {
     
     var images: [Image] = []
     
     var fetchResultController: NSFetchedResultsController!
-    
+    var session = Session!.self
     var wishList: WishList!
+    var sessionID:  NSNumber!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //print("jsdkjdsgks\(sessionID)")
         //print("c=\(wishList)")
-        if( wishList !== nil){
+        if( wishList == nil){
             print("wishList error")
         }
 
@@ -38,6 +40,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             
             do {
                 try fetchResultController.performFetch()
+                
                 images = fetchResultController.fetchedObjects as! [Image]
             } catch {
                 print(error)
@@ -46,6 +49,21 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         
         // Удалить title у кнопки  back
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    }
+    
+    
+    @IBAction func shomCamera(sender: AnyObject) {
+       var lol = AddImageTableViewController()
+        //lol.ShowCamera()
+//        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+//            let imagePicker = UIImagePickerController()
+//            imagePicker.delegate = self
+//                imagePicker.allowsEditing = false
+//            imagePicker.sourceType = .PhotoLibrary
+//            
+//            self.presentViewController(imagePicker, animated: true, completion: nil)
+//        }
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -142,7 +160,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         })
         
         shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 202.0/255.0, blue: 203.0/255.0, alpha: 1.0)
+        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
         
         return [deleteAction, shareAction]
     }
@@ -156,9 +174,11 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             let upcoming: AddImageTableViewController = destination as! AddImageTableViewController
     	
             upcoming.wishList = wishList
+            upcoming.sessionID =  self.sessionID
         }
     }
 
+    
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation

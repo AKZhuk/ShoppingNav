@@ -11,7 +11,7 @@ import UIKit
 
 class AddImageTableViewCell: UITableViewCell {
     
-    //@IBOutlet weak var imageView: UIImageView!
+   // @IBOutlet weak var imageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         
