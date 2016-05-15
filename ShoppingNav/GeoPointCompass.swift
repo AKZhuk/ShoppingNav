@@ -15,6 +15,10 @@ class GeoPointCompass :  NSObject, CLLocationManagerDelegate {
     private(set) var locationManager:CLLocationManager
     var arrowImageView: UIImageView?
     private var angle: Float = 0
+    var lantitude : Double!
+    var longitude : Double!
+    var distance : Double!
+    
 
     override init() {
         self.locationManager = CLLocationManager()
@@ -32,7 +36,7 @@ class GeoPointCompass :  NSObject, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         let location = locations.last
-        let toPoint = CLLocationCoordinate2D(latitude: CLLocationDegrees(53.8729), longitude: CLLocationDegrees(27.5714))
+        let toPoint = CLLocationCoordinate2D(latitude: CLLocationDegrees(self.lantitude), longitude: CLLocationDegrees(self.longitude))
         self.angle = calculateDistance(toPoint, userLocation: location!)
         print("\(calculateDistance(toPoint, userLocation: location!))")
     }
@@ -63,6 +67,7 @@ class GeoPointCompass :  NSObject, CLLocationManagerDelegate {
         let sumOfDegrees: Float = userLocationLongitude-targetedPointLongitude
         let widthBetweenDots : Float = sumOfDegrees*Float(degreeOfLongitude)
         let distance : Float = sqrt((powf(HeightBetweenDots, 2.0))*(powf(widthBetweenDots , 2.0)))
+        self.distance = Double(distance)
         print("Дистанция до цели \(distance) км")
         var angle : Float = atan(HeightBetweenDots/widthBetweenDots)
         let tang : Float = tan(HeightBetweenDots/widthBetweenDots)
@@ -72,12 +77,7 @@ class GeoPointCompass :  NSObject, CLLocationManagerDelegate {
         else {if (!(HeightBetweenDots.isSignMinus)){ angle = -(angle + Float(M_PI/2))}}
         return angle
     }
-    private func SumMinusOrPlus (uHeight : Float , tHeight :Float) -> Float {
-        let sum: Float
-        if (uHeight.isSignMinus == true || tHeight.isSignMinus){sum = abs(uHeight)+abs(tHeight)}
-        else {sum = abs(uHeight-tHeight)}
-        return sum
-    }
+
     
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {

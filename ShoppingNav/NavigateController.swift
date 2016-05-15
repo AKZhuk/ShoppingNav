@@ -27,10 +27,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         arrowImageView.center = self.view.center
         geoPointCompass = GeoPointCompass()
         geoPointCompass.arrowImageView = arrowImageView
-        
-        
+        geoPointCompass.lantitude = lantitude
+        geoPointCompass.longitude = lontitude
     }
     @IBOutlet weak var Distance: UILabel!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if CLLocationManager.locationServicesEnabled() {
