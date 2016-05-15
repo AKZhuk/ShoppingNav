@@ -9,6 +9,7 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class CustomTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -18,6 +19,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     var session :Session!
     var wishList: WishList!
     var sessionID:  NSNumber!
+    
     
     
     override func viewDidLoad() {

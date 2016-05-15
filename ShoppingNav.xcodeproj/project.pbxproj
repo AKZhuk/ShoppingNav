@@ -92,8 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				19FC59D61CE1E10A00ED974A /* AddImageTableViewCell.swift */,
-				19FC59D41CE1191A00ED974A /* AddImageTableViewController.swift */,
 				19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */,
+				19FC59D41CE1191A00ED974A /* AddImageTableViewController.swift */,
 				19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */,
 				1997B73C1CDFE69F0097458E /* WishLIstTableViewController.swift */,
 				1997B73A1CDFE3D40097458E /* WishListTableViewCell.swift */,
