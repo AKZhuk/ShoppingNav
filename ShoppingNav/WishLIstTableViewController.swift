@@ -242,9 +242,9 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             
         })
         
-        shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
-        editAction.backgroundColor  = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 3.0/255.0, alpha: 1.0)
+        shareAction.backgroundColor = Util.backgroundColor().0
+        deleteAction.backgroundColor = Util.backgroundColor().1
+        editAction.backgroundColor  = Util.backgroundColor().2
         
         return [deleteAction, shareAction, editAction]
     }

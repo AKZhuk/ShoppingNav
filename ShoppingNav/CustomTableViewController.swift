@@ -228,37 +228,10 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
 
         })
         
-        shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
-        
+        shareAction.backgroundColor = Util.backgroundColor().0
+        deleteAction.backgroundColor = Util.backgroundColor().1
+     
         return [deleteAction, shareAction]
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowCamera" {
-            var destination = segue.destinationViewController as? UIViewController
-            if let navCon = destination as? UINavigationController {
-                destination = navCon.visibleViewController
-            }
-            let upcoming: AddImageTableViewController = destination as! AddImageTableViewController
-    	
-            upcoming.wishList = wishList
-            upcoming.sessionID =  self.sessionID
-            upcoming.session =  session
-        }
-    }
-
-    
-    
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let destinationController = segue.destinationViewController as! DetailViewController
-                destinationController.restaurant = images[indexPath.row]
-            }
-        }
-    }*/
-}
+  }
 

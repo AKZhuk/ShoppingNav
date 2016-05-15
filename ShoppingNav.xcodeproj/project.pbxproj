@@ -23,8 +23,6 @@
 		19F6D70C1CE85B1300BD77B6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6D70B1CE85B1300BD77B6 /* Util.swift */; };
 		19FC59D11CE0BE3200ED974A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */; };
 		19FC59D31CE0C01E00ED974A /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */; };
-		19FC59D51CE1191A00ED974A /* AddImageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC59D41CE1191A00ED974A /* AddImageTableViewController.swift */; };
-		19FC59D71CE1E10A00ED974A /* AddImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC59D61CE1E10A00ED974A /* AddImageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +44,6 @@
 		19F6D70B1CE85B1300BD77B6 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
-		19FC59D41CE1191A00ED974A /* AddImageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddImageTableViewController.swift; sourceTree = "<group>"; };
-		19FC59D61CE1E10A00ED974A /* AddImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddImageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,9 +89,7 @@
 		1997B7321CDFC97D0097458E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				19FC59D61CE1E10A00ED974A /* AddImageTableViewCell.swift */,
 				19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */,
-				19FC59D41CE1191A00ED974A /* AddImageTableViewController.swift */,
 				19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */,
 				1997B73C1CDFE69F0097458E /* WishLIstTableViewController.swift */,
 				1997B73A1CDFE3D40097458E /* WishListTableViewCell.swift */,
@@ -215,14 +209,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1997B7311CDFC9530097458E /* SessionTableViewCell.swift in Sources */,
-				19FC59D51CE1191A00ED974A /* AddImageTableViewController.swift in Sources */,
 				19DE960E1CE08C6200E7BAD9 /* Image.swift in Sources */,
 				1997B72E1CDFC7FD0097458E /* Session.swift in Sources */,
 				1997B73B1CDFE3D40097458E /* WishListTableViewCell.swift in Sources */,
 				1997B7391CDFE3170097458E /* WishList.swift in Sources */,
 				1997B71B1CDFC5550097458E /* ShoppingNav.xcdatamodeld in Sources */,
 				19FC59D31CE0C01E00ED974A /* CustomTableViewController.swift in Sources */,
-				19FC59D71CE1E10A00ED974A /* AddImageTableViewCell.swift in Sources */,
 				19FC59D11CE0BE3200ED974A /* CustomTableViewCell.swift in Sources */,
 				1997B72C1CDFC76A0097458E /* SessionsTableViewController.swift in Sources */,
 				19F6D70C1CE85B1300BD77B6 /* Util.swift in Sources */,

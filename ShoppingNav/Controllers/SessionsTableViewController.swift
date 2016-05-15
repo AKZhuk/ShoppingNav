@@ -15,7 +15,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     
     var sessions: [Session] = []
     var images: [Image] = []
-    var shareImage: [NSData]=[]
+    var shareImage: [AnyObject]=[]
     var fetchResultController: NSFetchedResultsController!
     
     override func viewDidLoad() {
@@ -207,7 +207,6 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             }
             let upcoming: WishListTableViewController = destination as! WishListTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-            print("(\(sessions[indexPath.row]))")
             upcoming.sessionID=self.sessions[indexPath.row].id
             upcoming.session = self.sessions[indexPath.row]
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -251,12 +250,11 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         
         
         //Social
-        let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
-            //let defaultText = "Just checking in at " + self.sessions[indexPath.row].session_name
-            
-//            var clas=Util()
-//            var lol=Image
-//            var imag=clas.requestDB(lol,  formatKey: self.sessions[indexPath.row])
+            let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
+                //            var aaa=self.sessions[indexPath.row]
+                //            let imag=Util.requestDB("Image", format: Image.Session, formatKey: aaa, sessionController: self)
+
+            let defaultText = "Just checking in at " + self.sessions[indexPath.row].session_name
 
             let fetchRequest = NSFetchRequest(entityName: "Image")
             let ImageWishListPredicate = NSPredicate(format: "session = %@", self.sessions[indexPath.row])
@@ -267,7 +265,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
                 self.fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
                 self.fetchResultController.delegate = self
-                
+
                 do {
                     try self.fetchResultController.performFetch()
                     
@@ -278,28 +276,27 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
                     print(error)
                 }
             }
-
-            for _ in self.images{
-                self.shareImage.append(self.images[indexPath.row].image!)
+        
+            for img in self.images{
+                self.shareImage.append(img.image!)
             }
-
+            
             let activityController = UIActivityViewController(activityItems: self.shareImage, applicationActivities: nil)
             self.presentViewController(activityController, animated: true, completion: nil)
-        })
+        }
         
-        
+        )
         //Edit
         let editAction = UITableViewRowAction(style : .Default, title: "Edit", handler: {(actin, indexPath) -> Void in
             self.indexEditSession = indexPath
             self.alertEditSession(self.sessions[indexPath.row].session_name)
             
         })
-//        
-//        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 2.0)
-//        shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-//        
-//        editAction.backgroundColor  = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 3.0/255.0, alpha: 1.0)
         
+        deleteAction.backgroundColor = Util.backgroundColor().0
+        shareAction.backgroundColor = Util.backgroundColor().1
+        editAction.backgroundColor  = Util.backgroundColor().2
+                
         return [deleteAction, shareAction, editAction]
     }
 }
