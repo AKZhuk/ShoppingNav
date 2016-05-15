@@ -40,7 +40,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9u-gl-a5f">
-                                            <rect key="frame" x="34" y="8" width="498" height="48"/>
+                                            <rect key="frame" x="65" y="8" width="498" height="48"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                             <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -138,7 +138,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEP-ug-ud6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1650" y="-312"/>
+            <point key="canvasLocation" x="1708" y="-320"/>
         </scene>
         <!--AddImage-->
         <scene sceneID="Myu-tB-iZI">
@@ -152,7 +152,7 @@
                             <tableViewSection id="lgX-3b-uro">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="346" id="uZk-y9-h2e">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="346"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="346"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uZk-y9-h2e" id="Ece-wx-sYp">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="345"/>
@@ -172,7 +172,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2JE-rl-lMi">
-                                        <rect key="frame" x="0.0" y="410" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="346" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2JE-rl-lMi" id="CDw-Jt-cGC">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -180,7 +180,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="80R-HB-ocC">
-                                        <rect key="frame" x="0.0" y="454" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="390" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="80R-HB-ocC" id="aki-KR-k7o">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -216,22 +216,6 @@
             </objects>
             <point key="canvasLocation" x="2460" y="-1061"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="GBd-Qr-JVF">
-            <objects>
-                <navigationController id="syO-VZ-H1a" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Osw-zX-NbL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Ubs-3w-UsC" kind="relationship" relationship="rootViewController" id="dZH-1r-jMK"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Is1-Zc-LuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1642" y="-1061"/>
-        </scene>
         <!--WishLists-->
         <scene sceneID="jfv-vK-Ts5">
             <objects>
@@ -248,16 +232,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WishList Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d8-S0-iSA">
-                                            <rect key="frame" x="159" y="19" width="312" height="26"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WishList Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d8-S0-iSA">
+                                            <rect key="frame" x="158" y="19" width="312" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="312" id="xvn-O2-WyL"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="centerX" secondItem="VQb-Yh-UAX" secondAttribute="centerX" id="Gf6-xF-RZp"/>
-                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="centerY" secondItem="VQb-Yh-UAX" secondAttribute="centerY" id="gEk-LB-kt1"/>
+                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="top" secondItem="VQb-Yh-UAX" secondAttribute="topMargin" constant="11" id="Imn-fG-dPZ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8d8-S0-iSA" secondAttribute="trailing" constant="89" id="iFq-LW-QPj"/>
+                                        <constraint firstItem="8d8-S0-iSA" firstAttribute="centerY" secondItem="VQb-Yh-UAX" secondAttribute="centerY" id="mKD-vb-QJe"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

@@ -252,10 +252,12 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         
         //Social
         let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
-            let defaultText = "Just checking in at " + self.sessions[indexPath.row].session_name
+            //let defaultText = "Just checking in at " + self.sessions[indexPath.row].session_name
             
-            
-            
+//            var clas=Util()
+//            var lol=Image
+//            var imag=clas.requestDB(lol,  formatKey: self.sessions[indexPath.row])
+
             let fetchRequest = NSFetchRequest(entityName: "Image")
             let ImageWishListPredicate = NSPredicate(format: "session = %@", self.sessions[indexPath.row])
             fetchRequest.predicate = ImageWishListPredicate
@@ -277,7 +279,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
                 }
             }
 
-            for image in self.images{
+            for _ in self.images{
                 self.shareImage.append(self.images[indexPath.row].image!)
             }
 
@@ -292,11 +294,11 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             self.alertEditSession(self.sessions[indexPath.row].session_name)
             
         })
-        
-        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 2.0)
-        shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-        
-        editAction.backgroundColor  = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 3.0/255.0, alpha: 1.0)
+//        
+//        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 2.0)
+//        shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
+//        
+//        editAction.backgroundColor  = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 3.0/255.0, alpha: 1.0)
         
         return [deleteAction, shareAction, editAction]
     }

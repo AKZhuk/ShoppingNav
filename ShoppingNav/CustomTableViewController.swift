@@ -11,15 +11,16 @@ import UIKit
 import CoreData
 import CoreLocation
 
-class CustomTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class CustomTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, CLLocationManagerDelegate {
+    
+    var locationManager = CLLocationManager()
+    var manager:CLLocationManager!
+    var fetchResultController: NSFetchedResultsController!
     
     var images: [Image] = []
-    
-    var fetchResultController: NSFetchedResultsController!
     var session :Session!
     var wishList: WishList!
     var sessionID:  NSNumber!
-    
     
     
     override func viewDidLoad() {
@@ -62,6 +63,25 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         
     }
     
+    func location()->(Double,Double){
+                locationManager = CLLocationManager()
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.requestAlwaysAuthorization()
+                locationManager.startUpdatingLocation()
+            if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
+        
+           // currentLocation = locationManager.location
+        
+            }
+        
+        
+                let lat = locationManager.location?.coordinate.latitude
+                let lon = locationManager.location?.coordinate.longitude
+                return (lat!,lon!)
+            }
+    
     func RequestToCoreData(){
         let fetchRequest = NSFetchRequest(entityName: "Image")
         let ImageWishListPredicate = NSPredicate(format: "wishList = %@", wishList)
@@ -90,11 +110,13 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
             let imageCon = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: managedObjectContext) as! Image
             
-            //let photoLocation=location()
+            let photoLocation=location()
+            print("lan=\(photoLocation.0)")
+            print("lon=\(photoLocation.1)")
+            
             imageCon.image = UIImagePNGRepresentation(image)!
-            //  print("\(photoLocation)")
-            //                image.lantitude=photoLocation.0
-            //                image.lontitude=photoLocation.1
+            imageCon.lantitude=photoLocation.0
+            imageCon.lontitude=photoLocation.1
             imageCon.wishList = wishList
             imageCon.session = session
             //image.id = date as NSNumber
@@ -107,7 +129,6 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             } catch {
                 print(error)
                 return
-                
             }
         }
         
