@@ -10,12 +10,12 @@ import Foundation
 import CoreLocation
 import UIKit
 
-class GeoPointCompass : NSObject, CLLocationManagerDelegate {
+class GeoPointCompass :  NSObject, CLLocationManagerDelegate {
     
     private(set) var locationManager:CLLocationManager
     var arrowImageView: UIImageView?
     private var angle: Float = 0
-    
+
     override init() {
         self.locationManager = CLLocationManager()
         super.init()
@@ -24,6 +24,7 @@ class GeoPointCompass : NSObject, CLLocationManagerDelegate {
             self.locationManager.delegate = self
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
             self.locationManager.distanceFilter = 1
+            
         }
         
     }

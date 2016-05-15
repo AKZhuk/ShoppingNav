@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -87,9 +86,20 @@
                     <view key="view" contentMode="scaleToFill" id="eQP-W0-bbR" customClass="view">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2S-6D-faB">
+                                <rect key="frame" x="139" y="414" width="322" height="62"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ngG-9L-F15"/>
+                    <connections>
+                        <outlet property="Distance" destination="G2S-6D-faB" id="whI-PZ-Yll"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MWu-Jj-8UC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,14 +118,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Title" id="JN4-Yw-75q">
-                                    <rightBarButtonItems>
-                                        <barButtonItem systemItem="camera" id="HNw-qj-Pfm">
-                                            <connections>
-                                                <action selector="createPhoto:" destination="O05-oJ-aZN" id="dqU-Pf-F55"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem title="Item" id="lQb-VP-nFJ"/>
-                                    </rightBarButtonItems>
+                                    <barButtonItem key="rightBarButtonItem" systemItem="camera" id="HNw-qj-Pfm">
+                                        <connections>
+                                            <action selector="createPhoto:" destination="O05-oJ-aZN" id="dqU-Pf-F55"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>

@@ -25,7 +25,8 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        locationManager = CLLocationManager()
+        locationManager.requestAlwaysAuthorization()
         refresh()
         
         
@@ -63,10 +64,11 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     }
     
     func location()->(Double,Double){
-                locationManager = CLLocationManager()
+        
                 locationManager.delegate = self
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                locationManager.requestAlwaysAuthorization()
+                self.locationManager.distanceFilter = 1
+        
                 locationManager.startUpdatingLocation()
             if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
@@ -194,7 +196,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             if let navCon = destination as? UINavigationController {
                 destination = navCon.visibleViewController!
             }
-            let upcoming:ViewController = destination as! ViewController
+            let upcoming: ViewController = destination as! ViewController
             
             let indexPath = self.tableView.indexPathForSelectedRow!
       

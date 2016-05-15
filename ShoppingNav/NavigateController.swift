@@ -12,8 +12,10 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
         var geoPointCompass: GeoPointCompass!
-        var lantitude: NSNumber!
-        var lontitude: NSNumber!
+    var lantitude: Double!
+    var lontitude: Double!
+    
+    
     override func viewDidLoad() {
         print("\(lantitude)")
         print("\(lontitude)")
@@ -26,8 +28,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         geoPointCompass = GeoPointCompass()
         geoPointCompass.arrowImageView = arrowImageView
         
+        
     }
-    //@IBOutlet weak var Distance: UILabel!
+    @IBOutlet weak var Distance: UILabel!
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if CLLocationManager.locationServicesEnabled() {
