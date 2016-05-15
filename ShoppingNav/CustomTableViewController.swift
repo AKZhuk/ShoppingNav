@@ -25,14 +25,10 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if( wishList == nil){
-            print("wishList error")
-        }
-        RequestToCoreData()
+        
+        refresh()
         
         
-        // Удалить title у кнопки  back
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         }
     
@@ -58,7 +54,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             image = info[UIImagePickerControllerOriginalImage] as? UIImage
         }
         save(image!)
-        RequestToCoreData()
+        refresh()
         dismissViewControllerAnimated(true, completion: nil)
         
     }
@@ -72,7 +68,6 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
         
-           // currentLocation = locationManager.location
         
             }
         
@@ -82,7 +77,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
                 return (lat!,lon!)
             }
     
-    func RequestToCoreData(){
+    func refresh(){
         let fetchRequest = NSFetchRequest(entityName: "Image")
         let ImageWishListPredicate = NSPredicate(format: "wishList = %@", wishList)
         fetchRequest.predicate = ImageWishListPredicate
@@ -119,7 +114,6 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             imageCon.lontitude=photoLocation.1
             imageCon.wishList = wishList
             imageCon.session = session
-            //image.id = date as NSNumber
             
             
             do {
@@ -228,8 +222,8 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
 
         })
         
-        shareAction.backgroundColor = Util.backgroundColor().0
-        deleteAction.backgroundColor = Util.backgroundColor().1
+        shareAction.backgroundColor = Util.backgroundColor().1
+        deleteAction.backgroundColor = Util.backgroundColor().0
      
         return [deleteAction, shareAction]
     }

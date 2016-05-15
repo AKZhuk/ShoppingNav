@@ -81,18 +81,6 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
         
     }
     
-    func isNameValid(newName: String) -> Bool
-    {
-        //        let newSession = Session()
-        //        newSession.session_name = newName
-        //        newSession.id = sessions.count
-        //        if sessions.contains(newSession) {
-        //            return false;
-        //        }else{
-        //            return true;
-        //        }
-        return true;
-    }
     
     func refresh()
     {
@@ -194,9 +182,9 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showImages" {
             
-             var destination = segue.destinationViewController as? UIViewController
+             var destination = segue.destinationViewController 
              if let navCon = destination as? UINavigationController {
-             destination = navCon.visibleViewController
+             destination = navCon.visibleViewController!
              }
             let upcoming:CustomTableViewController = destination as! CustomTableViewController
             
@@ -235,8 +223,8 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             }
         })
         
-        //Edit
-        let editAction = UITableViewRowAction(style : .Default, title: "Edit", handler: {(actin, indexPath) -> Void in
+        //Rename
+        let editAction = UITableViewRowAction(style : .Default, title: "Rename", handler: {(actin, indexPath) -> Void in
             self.indexEditWishList = indexPath
             self.alertEditSession(self.WishLists[indexPath.row].name)
             

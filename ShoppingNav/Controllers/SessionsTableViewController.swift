@@ -27,22 +27,15 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     var newSessionName = ""
         {
         didSet {
-            
-            //            if isNameValid()
-            //            {
-            if( newSessionName == "" )
+                if( newSessionName == "" )
             {
-                mistakeAlert("Session name would consist some value")
+                mistakeAlert("Enter something!")
                 
             }else {
                 addSessionToStorage(newSessionName)
                 refresh()
                 
             }
-            
-            //            }else {
-            //                mistakeAlert("This name has already been. Please, enter uniqe name")
-            //            }
         }
     }
     
@@ -62,19 +55,6 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             }
         }
         
-    }
-    
-    func isNameValid(newName: String) -> Bool
-    {
-        //        let newSession = Session()
-        //        newSession.session_name = newName
-        //        newSession.id = sessions.count
-        //        if sessions.contains(newSession) {
-        //            return false;
-        //        }else{
-        //            return true;
-        //        }
-        return true;
     }
     
     func refresh()
@@ -136,14 +116,12 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         {
         didSet{
             if(editSessionName == ""){
-                mistakeAlert("Session name would consist some value")
+                mistakeAlert("Edit something!")
             }else {
                 editSession(editSessionName, indexPath: self.indexEditSession!)
                 tableView.reloadRowsAtIndexPaths([self.indexEditSession!], withRowAnimation: .Fade)
             }
-            
         }
-        
     }
     
     func editSession(editSessionName: String, indexPath: NSIndexPath)
@@ -163,7 +141,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     func alertEditSession(defaultText: String)
     {
         
-        let alert = UIAlertController(title: "Session Name", message: "Enter a text", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Session Name", message: "Enter a sassion name", preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
             textField.text = defaultText
         })
@@ -201,9 +179,9 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showSession" {
-        var destination = segue.destinationViewController as? UIViewController
+        var destination = segue.destinationViewController
           if let navCon = destination as? UINavigationController {
-                destination = navCon.visibleViewController
+                destination = navCon.visibleViewController!
             }
             let upcoming: WishListTableViewController = destination as! WishListTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
@@ -254,8 +232,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
                 //            var aaa=self.sessions[indexPath.row]
                 //            let imag=Util.requestDB("Image", format: Image.Session, formatKey: aaa, sessionController: self)
 
-            let defaultText = "Just checking in at " + self.sessions[indexPath.row].session_name
-
+        
             let fetchRequest = NSFetchRequest(entityName: "Image")
             let ImageWishListPredicate = NSPredicate(format: "session = %@", self.sessions[indexPath.row])
             fetchRequest.predicate = ImageWishListPredicate
@@ -286,8 +263,8 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         }
         
         )
-        //Edit
-        let editAction = UITableViewRowAction(style : .Default, title: "Edit", handler: {(actin, indexPath) -> Void in
+        //Rename
+        let editAction = UITableViewRowAction(style : .Default, title: "Rename", handler: {(actin, indexPath) -> Void in
             self.indexEditSession = indexPath
             self.alertEditSession(self.sessions[indexPath.row].session_name)
             

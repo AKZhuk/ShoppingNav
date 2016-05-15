@@ -79,16 +79,10 @@
 		1997B7111CDFC5550097458E /* ShoppingNav */ = {
 			isa = PBXGroup;
 			children = (
-				1997B7341CDFC9B00097458E /* Model */,
-				1997B7331CDFC99B0097458E /* View */,
-				1997B7321CDFC97D0097458E /* Controller */,
-			);
-			path = ShoppingNav;
-			sourceTree = "<group>";
-		};
-		1997B7321CDFC97D0097458E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				1997B7381CDFE3170097458E /* WishList.swift */,
+				1997B72D1CDFC7FD0097458E /* Session.swift */,
+				19DE960D1CE08C6100E7BAD9 /* Image.swift */,
+				1997B7161CDFC5550097458E /* Main.storyboard */,
 				19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */,
 				19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */,
 				1997B73C1CDFE69F0097458E /* WishLIstTableViewController.swift */,
@@ -96,25 +90,7 @@
 				1997B7301CDFC9530097458E /* SessionTableViewCell.swift */,
 				1997B72B1CDFC76A0097458E /* SessionsTableViewController.swift */,
 			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		1997B7331CDFC99B0097458E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1997B7161CDFC5550097458E /* Main.storyboard */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		1997B7341CDFC9B00097458E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				19DE960D1CE08C6100E7BAD9 /* Image.swift */,
-				1997B7381CDFE3170097458E /* WishList.swift */,
-				1997B72D1CDFC7FD0097458E /* Session.swift */,
-			);
-			name = Model;
+			path = ShoppingNav;
 			sourceTree = "<group>";
 		};
 		1997B7351CDFC9CC0097458E /* Support */ = {
