@@ -31,8 +31,13 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
     @IBAction func addWishList(sender: AnyObject) {
             let alert = UIAlertController(title: "WishList Name", message: "Enter a text", preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Add wishList"
+            
         })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+            print("Handle Cancel Logic here")
+        }))
+        
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.newWishListName = textField.text!

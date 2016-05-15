@@ -10,7 +10,7 @@
 import UIKit
 import CoreData
 
-class CustomTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate {
+class CustomTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     var images: [Image] = []
     
@@ -26,10 +26,44 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         if( wishList == nil){
             print("wishList error")
         }
+        RequestToCoreData()
+        
+        
+        // Удалить title у кнопки  back
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        }
+    
+    
+    
+    
+    @IBAction func createPhoto(sender: UIBarButtonItem) {
+        
+        if( UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)) {
+            let picker = UIImagePickerController()
+            picker.sourceType = .PhotoLibrary
+            picker.delegate = self
+            presentViewController(picker, animated:true, completion: nil)
+    }
+}
 
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        var image = info[UIImagePickerControllerEditedImage] as? UIImage
+        
+        if image == nil {
+            image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        }
+        save(image!)
+        RequestToCoreData()
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    func RequestToCoreData(){
         let fetchRequest = NSFetchRequest(entityName: "Image")
         let ImageWishListPredicate = NSPredicate(format: "wishList = %@", wishList)
-      fetchRequest.predicate = ImageWishListPredicate
+        fetchRequest.predicate = ImageWishListPredicate
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
@@ -44,26 +78,41 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             } catch {
                 print(error)
             }
+            self.tableView.reloadData()
+        }
+}
+    
+    
+    func save(image: UIImage) {
+        
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+            let imageCon = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: managedObjectContext) as! Image
+            
+            //let photoLocation=location()
+            imageCon.image = UIImagePNGRepresentation(image)!
+            //  print("\(photoLocation)")
+            //                image.lantitude=photoLocation.0
+            //                image.lontitude=photoLocation.1
+            imageCon.wishList = wishList
+            imageCon.session = session
+            //image.id = date as NSNumber
+            
+            
+            do {
+                
+                try managedObjectContext.save()
+                
+            } catch {
+                print(error)
+                return
+                
+            }
         }
         
-        // Удалить title у кнопки  back
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    
-    @IBAction func shomCamera(sender: AnyObject) {
-       _ = AddImageTableViewController()
-        //lol.ShowCamera()
-//        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
-//            let imagePicker = UIImagePickerController()
-//            imagePicker.delegate = self
-//                imagePicker.allowsEditing = false
-//            imagePicker.sourceType = .PhotoLibrary
-//            
-//            self.presentViewController(imagePicker, animated: true, completion: nil)
-//        }
 
-    }
+
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

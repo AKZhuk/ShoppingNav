@@ -26,42 +26,7 @@ class AddImageTableViewController: UITableViewController, UIImagePickerControlle
 
     }
     
-//    func ShowCamera(){
-//        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
-//            let imagePicker = UIImagePickerController()
-//            imagePicker.delegate = self
-//            imagePicker.allowsEditing = false
-//            imagePicker.sourceType = .PhotoLibrary
-//            
-//            self.presentViewController(imagePicker, animated: true, completion: nil)
-//            
-//            if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-//                image = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: managedObjectContext) as! Image
-//                
-//                //if let photoImage = imageView.image {
-//                
-//                image.image = UIImagePNGRepresentation(ima!)
-//                //                let photoLocation=location()
-//                //                image.lantitude=photoLocation.0
-//                //                image.lontitude=photoLocation.1
-//                image.wishList = wishList
-//                image.id = date as NSNumber
-//                
-//                //}
-//                
-//                do {
-//                    
-//                    try managedObjectContext.save()
-//                    
-//                } catch {
-//                    print(error)
-//                    return
-//                    
-//                }
-//
-//            
-//        }
-//    }
+
     
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

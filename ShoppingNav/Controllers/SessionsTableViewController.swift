@@ -106,8 +106,11 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         
         let alert = UIAlertController(title: "Session Name", message: "Enter a text", preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Galileo"
+           
         })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+            print("Handle Cancel Logic here")
+        }))
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.newSessionName = textField.text!
@@ -226,6 +229,27 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         
     }
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+       
+        //Delete
+        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {(actin, indexPath) -> Void in
+            self.sessions.removeAtIndex(indexPath.row)
+            
+            if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+                let sessionToDelete = self.fetchResultController.objectAtIndexPath(indexPath) as! Session
+                
+                managedObjectContext.deleteObject(sessionToDelete)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    print(error)
+                }
+            }
+        })
+
+        
+        
+        
         //Social
         let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
             let defaultText = "Just checking in at " + self.sessions[indexPath.row].session_name
@@ -261,22 +285,6 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             self.presentViewController(activityController, animated: true, completion: nil)
         })
         
-        //Delete
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {(actin, indexPath) -> Void in
-            self.sessions.removeAtIndex(indexPath.row)
-            
-            if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-                let sessionToDelete = self.fetchResultController.objectAtIndexPath(indexPath) as! Session
-                
-                managedObjectContext.deleteObject(sessionToDelete)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                do {
-                    try managedObjectContext.save()
-                } catch {
-                    print(error)
-                }
-            }
-        })
         
         //Edit
         let editAction = UITableViewRowAction(style : .Default, title: "Edit", handler: {(actin, indexPath) -> Void in
@@ -285,8 +293,9 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             
         })
         
+        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 2.0)
         shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 202.0/255.0, blue: 203.0/255.0, alpha: 1.0)
+        
         editAction.backgroundColor  = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 3.0/255.0, alpha: 1.0)
         
         return [deleteAction, shareAction, editAction]
