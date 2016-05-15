@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 import CoreLocation
 
-class CustomTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, CLLocationManagerDelegate {
+class CustomTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate , CLLocationManagerDelegate{
     
     var locationManager = CLLocationManager()
     var manager:CLLocationManager!
@@ -35,6 +35,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     
     
     
+    
     @IBAction func createPhoto(sender: UIBarButtonItem) {
         
         if( UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)) {
@@ -45,6 +46,8 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     }
 }
 
+    
+    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
@@ -67,11 +70,8 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
                 locationManager.startUpdatingLocation()
             if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
-        
-        
+                
             }
-        
-        
                 let lat = locationManager.location?.coordinate.latitude
                 let lon = locationManager.location?.coordinate.longitude
                 return (lat!,lon!)
@@ -108,7 +108,6 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
             let photoLocation=location()
             print("lan=\(photoLocation.0)")
             print("lon=\(photoLocation.1)")
-            
             imageCon.image = UIImagePNGRepresentation(image)!
             imageCon.lantitude=photoLocation.0
             imageCon.lontitude=photoLocation.1
@@ -128,12 +127,13 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         
         dismissViewControllerAnimated(true, completion: nil)
     }
-
-
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.startUpdatingLocation()
+            self.locationManager.startUpdatingHeading()
+        }
         navigationController?.hidesBarsOnSwipe = true
         prefersStatusBarHidden()
     }
@@ -185,6 +185,26 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showNavigate" {
+            
+            var destination = segue.destinationViewController
+            if let navCon = destination as? UINavigationController {
+                destination = navCon.visibleViewController!
+            }
+            let upcoming:ViewController = destination as! ViewController
+            
+            let indexPath = self.tableView.indexPathForSelectedRow!
+      
+            upcoming.lantitude = self.images[indexPath.row].lantitude
+            upcoming.lontitude=self.images[indexPath.row].lontitude
+          
+            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+    }
+
     
     // MARK: - Table view delegate
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {

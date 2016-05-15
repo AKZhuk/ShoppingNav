@@ -21,6 +21,9 @@
 		19DE960E1CE08C6200E7BAD9 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE960D1CE08C6100E7BAD9 /* Image.swift */; };
 		19F6D6E11CE6825C00BD77B6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6D6E01CE6825C00BD77B6 /* MapKit.framework */; };
 		19F6D70C1CE85B1300BD77B6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6D70B1CE85B1300BD77B6 /* Util.swift */; };
+		19F6D7121CE8B2DD00BD77B6 /* NavigateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6D7111CE8B2DD00BD77B6 /* NavigateController.swift */; };
+		19F6D7141CE8B2FA00BD77B6 /* GeoPointCompass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6D7131CE8B2FA00BD77B6 /* GeoPointCompass.swift */; };
+		19F6D7161CE8B3CA00BD77B6 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F6D7151CE8B3CA00BD77B6 /* arrow.png */; };
 		19FC59D11CE0BE3200ED974A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */; };
 		19FC59D31CE0C01E00ED974A /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +45,9 @@
 		19DE960D1CE08C6100E7BAD9 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		19F6D6E01CE6825C00BD77B6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		19F6D70B1CE85B1300BD77B6 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		19F6D7111CE8B2DD00BD77B6 /* NavigateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigateController.swift; sourceTree = "<group>"; };
+		19F6D7131CE8B2FA00BD77B6 /* GeoPointCompass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPointCompass.swift; sourceTree = "<group>"; };
+		19F6D7151CE8B3CA00BD77B6 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow.png; path = ../../../Downloads/arrow.png; sourceTree = "<group>"; };
 		19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +90,8 @@
 				19DE960D1CE08C6100E7BAD9 /* Image.swift */,
 				1997B7161CDFC5550097458E /* Main.storyboard */,
 				19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */,
+				19F6D7111CE8B2DD00BD77B6 /* NavigateController.swift */,
+				19F6D7131CE8B2FA00BD77B6 /* GeoPointCompass.swift */,
 				19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */,
 				1997B73C1CDFE69F0097458E /* WishLIstTableViewController.swift */,
 				1997B73A1CDFE3D40097458E /* WishListTableViewCell.swift */,
@@ -96,6 +104,7 @@
 		1997B7351CDFC9CC0097458E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				19F6D7151CE8B3CA00BD77B6 /* arrow.png */,
 				19F6D70B1CE85B1300BD77B6 /* Util.swift */,
 				1997B7121CDFC5550097458E /* AppDelegate.swift */,
 				1997B71E1CDFC5550097458E /* LaunchScreen.storyboard */,
@@ -141,6 +150,9 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = FRXWE876E5;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -174,6 +186,7 @@
 				1997B7201CDFC5550097458E /* LaunchScreen.storyboard in Resources */,
 				1997B71D1CDFC5550097458E /* Assets.xcassets in Resources */,
 				1997B7181CDFC5550097458E /* Main.storyboard in Resources */,
+				19F6D7161CE8B3CA00BD77B6 /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +202,9 @@
 				1997B72E1CDFC7FD0097458E /* Session.swift in Sources */,
 				1997B73B1CDFE3D40097458E /* WishListTableViewCell.swift in Sources */,
 				1997B7391CDFE3170097458E /* WishList.swift in Sources */,
+				19F6D7141CE8B2FA00BD77B6 /* GeoPointCompass.swift in Sources */,
 				1997B71B1CDFC5550097458E /* ShoppingNav.xcdatamodeld in Sources */,
+				19F6D7121CE8B2DD00BD77B6 /* NavigateController.swift in Sources */,
 				19FC59D31CE0C01E00ED974A /* CustomTableViewController.swift in Sources */,
 				19FC59D11CE0BE3200ED974A /* CustomTableViewCell.swift in Sources */,
 				1997B72C1CDFC76A0097458E /* SessionsTableViewController.swift in Sources */,

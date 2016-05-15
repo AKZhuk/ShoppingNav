@@ -29,7 +29,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         didSet {
                 if( newSessionName == "" )
             {
-                mistakeAlert("Enter something!")
+                mistakeAlert("Write something!")
                 
             }else {
                 addSessionToStorage(newSessionName)
@@ -89,9 +89,9 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
            
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
-            print("Handle Cancel Logic here")
+    
         }))
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Submit", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.newSessionName = textField.text!
             
@@ -141,7 +141,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     func alertEditSession(defaultText: String)
     {
         
-        let alert = UIAlertController(title: "Session Name", message: "Enter a sassion name", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Session Name", message: "Write a sassion name", preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
             textField.text = defaultText
         })
@@ -154,12 +154,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -191,23 +186,11 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         }
     }
     
-    @IBAction func twitterButtonPushed(sender: UIBarButtonItem) {
-        
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
-            let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            twitterSheet.setInitialText("Share on Twitter")
-            self.presentViewController(twitterSheet, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
-        
-        
-    }
+            
+    
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
        
-        //Delete
+        
         let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {(actin, indexPath) -> Void in
             self.sessions.removeAtIndex(indexPath.row)
             
@@ -227,7 +210,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         
         
         
-        //Social
+       
             let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
                 //            var aaa=self.sessions[indexPath.row]
                 //            let imag=Util.requestDB("Image", format: Image.Session, formatKey: aaa, sessionController: self)
@@ -258,12 +241,14 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
                 self.shareImage.append(img.image!)
             }
             
+                                
+                
             let activityController = UIActivityViewController(activityItems: self.shareImage, applicationActivities: nil)
             self.presentViewController(activityController, animated: true, completion: nil)
         }
         
         )
-        //Rename
+        
         let editAction = UITableViewRowAction(style : .Default, title: "Rename", handler: {(actin, indexPath) -> Void in
             self.indexEditSession = indexPath
             self.alertEditSession(self.sessions[indexPath.row].session_name)

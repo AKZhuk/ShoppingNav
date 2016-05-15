@@ -38,7 +38,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             print("Handle Cancel Logic here")
         }))
         
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Submit", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.newWishListName = textField.text!
             
