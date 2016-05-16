@@ -85,18 +85,12 @@
 		1997B7111CDFC5550097458E /* ShoppingNav */ = {
 			isa = PBXGroup;
 			children = (
-				1997B7381CDFE3170097458E /* WishList.swift */,
-				1997B72D1CDFC7FD0097458E /* Session.swift */,
-				19DE960D1CE08C6100E7BAD9 /* Image.swift */,
 				1997B7161CDFC5550097458E /* Main.storyboard */,
 				19FC59D21CE0C01E00ED974A /* CustomTableViewController.swift */,
-				19F6D7111CE8B2DD00BD77B6 /* NavigateController.swift */,
-				19F6D7131CE8B2FA00BD77B6 /* GeoPointCompass.swift */,
-				19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */,
 				1997B73C1CDFE69F0097458E /* WishLIstTableViewController.swift */,
-				1997B73A1CDFE3D40097458E /* WishListTableViewCell.swift */,
-				1997B7301CDFC9530097458E /* SessionTableViewCell.swift */,
 				1997B72B1CDFC76A0097458E /* SessionsTableViewController.swift */,
+				19F6D7131CE8B2FA00BD77B6 /* GeoPointCompass.swift */,
+				19F6D7111CE8B2DD00BD77B6 /* NavigateController.swift */,
 			);
 			path = ShoppingNav;
 			sourceTree = "<group>";
@@ -104,8 +98,14 @@
 		1997B7351CDFC9CC0097458E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				19FC59D01CE0BE3200ED974A /* CustomTableViewCell.swift */,
+				1997B73A1CDFE3D40097458E /* WishListTableViewCell.swift */,
+				1997B7301CDFC9530097458E /* SessionTableViewCell.swift */,
 				19F6D7151CE8B3CA00BD77B6 /* arrow.png */,
 				19F6D70B1CE85B1300BD77B6 /* Util.swift */,
+				19DE960D1CE08C6100E7BAD9 /* Image.swift */,
+				1997B72D1CDFC7FD0097458E /* Session.swift */,
+				1997B7381CDFE3170097458E /* WishList.swift */,
 				1997B7121CDFC5550097458E /* AppDelegate.swift */,
 				1997B71E1CDFC5550097458E /* LaunchScreen.storyboard */,
 				1997B7211CDFC5550097458E /* Info.plist */,

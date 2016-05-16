@@ -29,7 +29,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         didSet {
                 if( newSessionName == "" )
             {
-                mistakeAlert("Write something!")
+              mistakeAlert("Write something!")
                 
             }else {
                 addSessionToStorage(newSessionName)
@@ -38,6 +38,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             }
         }
     }
+    
     
     func addSessionToStorage(sessionName: String)
     {
@@ -108,7 +109,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     func mistakeAlert(mistakeText: String)
     {
         let alert = UIAlertController(title: "Mistake", message: mistakeText, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler:nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler:nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
     var indexEditSession: NSIndexPath?
@@ -186,12 +187,36 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         }
     }
     
-            
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-       
+    func  prepapareForShare(indexPath: NSIndexPath){
+    
+    
+        let fetchRequest = NSFetchRequest(entityName: "Image")
+        let ImageWishListPredicate = NSPredicate(format: "session = %@", self.sessions[indexPath.row])
+        fetchRequest.predicate = ImageWishListPredicate
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {(actin, indexPath) -> Void in
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+            self.fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+            self.fetchResultController.delegate = self
+            
+            do {
+                try self.fetchResultController.performFetch()
+                
+                self.images = self.fetchResultController.fetchedObjects as! [Image]
+                
+                
+            } catch {
+                print(error)
+            }
+        }
+        
+    }
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+       //SessionTableViewController.popoverPresentationController?.sourceView = self.view
+        
+        let deleteAction = UITableViewRowAction(style: .Destructive, title: "Delete", handler: {(actin, indexPath) -> Void in
             self.sessions.removeAtIndex(indexPath.row)
             
             if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
@@ -211,54 +236,40 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         
         
        
-            let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
+            let shareAction = UITableViewRowAction(style: .Normal, title: "Share", handler: { (actin, indexPath) -> Void in
                 //            var aaa=self.sessions[indexPath.row]
                 //            let imag=Util.requestDB("Image", format: Image.Session, formatKey: aaa, sessionController: self)
 
-        
-            let fetchRequest = NSFetchRequest(entityName: "Image")
-            let ImageWishListPredicate = NSPredicate(format: "session = %@", self.sessions[indexPath.row])
-            fetchRequest.predicate = ImageWishListPredicate
-            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor]
-            
-            if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-                self.fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-                self.fetchResultController.delegate = self
-
-                do {
-                    try self.fetchResultController.performFetch()
-                    
-                    self.images = self.fetchResultController.fetchedObjects as! [Image]
-                    
-                    
-                } catch {
-                    print(error)
-                }
-            }
-        
+                self.prepapareForShare(indexPath)
             for img in self.images{
                 self.shareImage.append(img.image!)
             }
             
-                                
-                
             let activityController = UIActivityViewController(activityItems: self.shareImage, applicationActivities: nil)
+                
+                if (activityController.popoverPresentationController != nil) {
+                    activityController.popoverPresentationController!.sourceView = self.tableView.cellForRowAtIndexPath(indexPath)
+                    
+                
+                    activityController.popoverPresentationController!.sourceRect = CGRect(
+                        x: 250,
+                        y: 130,
+                        width: 1,
+                        height: 1)
+                }
             self.presentViewController(activityController, animated: true, completion: nil)
         }
         
         )
         
-        let editAction = UITableViewRowAction(style : .Default, title: "Rename", handler: {(actin, indexPath) -> Void in
+        let editAction = UITableViewRowAction( style : .Default ,title: "Rename", handler: {(actin, indexPath) -> Void in
             self.indexEditSession = indexPath
             self.alertEditSession(self.sessions[indexPath.row].session_name)
             
         })
-        
         deleteAction.backgroundColor = Util.backgroundColor().0
         shareAction.backgroundColor = Util.backgroundColor().1
         editAction.backgroundColor  = Util.backgroundColor().2
-                
         return [deleteAction, shareAction, editAction]
     }
 }

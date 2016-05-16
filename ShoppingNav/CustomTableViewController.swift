@@ -20,21 +20,18 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     var images: [Image] = []
     var session :Session!
     var wishList: WishList!
-    var sessionID:  NSNumber!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager = CLLocationManager()
-        locationManager.requestAlwaysAuthorization()
+        
         refresh()
         
+        locationManager = CLLocationManager()
+        locationManager.requestAlwaysAuthorization()
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         }
-    
-    
-    
     
     
     @IBAction func createPhoto(sender: UIBarButtonItem) {
@@ -72,7 +69,7 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
                 locationManager.startUpdatingLocation()
             if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
-                
+            
             }
                 let lat = locationManager.location?.coordinate.latitude
                 let lon = locationManager.location?.coordinate.longitude
@@ -107,12 +104,12 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
             let imageCon = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: managedObjectContext) as! Image
             
-            let photoLocation=location()
-            print("lan=\(photoLocation.0)")
-            print("lon=\(photoLocation.1)")
+//            let photoLocation=location()
+//            print("lan=\(photoLocation.0)")
+//            print("lon=\(photoLocation.1)")
             imageCon.image = UIImagePNGRepresentation(image)!
-            imageCon.lantitude=photoLocation.0
-            imageCon.lontitude=photoLocation.1
+//           imageCon.lantitude=photoLocation.0
+//            imageCon.lontitude=photoLocation.1
             imageCon.wishList = wishList
             imageCon.session = session
             
@@ -210,29 +207,29 @@ class CustomTableViewController: UITableViewController, NSFetchedResultsControll
     
     // MARK: - Table view delegate
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        //Social
+        
         let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
             let shareImages =  self.images[indexPath.row].image!
-//           var shareImage=[AnyObject]()
-//
-//            for image in self.images{
-//              shareImage.append(self.images[indexPath.row].image!)
-//            }
-
-            
-            
-
             let activityController = UIActivityViewController(activityItems: [shareImages], applicationActivities: nil)
+        
+            if (activityController.popoverPresentationController != nil) {
+                activityController.popoverPresentationController!.sourceView = self.tableView.cellForRowAtIndexPath(indexPath)
+                activityController.popoverPresentationController!.sourceRect = CGRect(
+                    x: 250,
+                    y: 130,
+                    width: 1,
+                    height: 1)
+            }
+
             self.presentViewController(activityController, animated: true, completion: nil)
         })
         
         //Delete
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {(actin, indexPath) -> Void in
+        let deleteAction = UITableViewRowAction(style: .Destructive, title: "Delete", handler: {(actin, indexPath) -> Void in
             self.images.removeAtIndex(indexPath.row)
             
             if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
                 let restarauntToDelete = self.fetchResultController.objectAtIndexPath(indexPath) as! Image
-                
                 managedObjectContext.deleteObject(restarauntToDelete)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 do {

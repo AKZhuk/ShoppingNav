@@ -62,6 +62,15 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
         }
     }
     
+    func mistakeAlert(mistakeText : String)
+    {
+        let alert = UIAlertController(title: "Mistake", message: mistakeText, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler:nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
+    
+    
     func addWishListToStorage(WishListName: String)
     {
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
@@ -104,17 +113,13 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
         self.tableView.reloadData()
     }
     
-    func mistakeAlert(mistakeText: String)
-    {
-        let alert = UIAlertController(title: "Mistake", message: mistakeText, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler:nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
+   //mistake
     var indexEditWishList: NSIndexPath?
     var editWishListName = "111"
         {
         didSet{
             if(editWishListName == ""){
+
                 mistakeAlert("WishList name would consist some value")
             }else {
                 editWishList(editWishListName, indexPath: self.indexEditWishList!)
@@ -142,7 +147,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
     func alertEditSession(defaultText: String)
     {
         
-        let alert = UIAlertController(title: "Wish List      Name", message: "Enter a text", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Wish List Name", message: "Enter a text", preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
             textField.text = defaultText
         })
@@ -191,7 +196,7 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
             let indexPath = self.tableView.indexPathForSelectedRow!
             
             upcoming.wishList = self.WishLists[indexPath.row]
-            upcoming.sessionID=self.session.id
+           // upcoming.sessionID=self.session.id
             upcoming.session=session
             
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -203,6 +208,17 @@ class WishListTableViewController: UITableViewController, NSFetchedResultsContro
         let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
             let defaultText = "Just checking in at " + self.WishLists[indexPath.row].name
             let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            if (activityController.popoverPresentationController != nil) {
+                activityController.popoverPresentationController!.sourceView = self.tableView.cellForRowAtIndexPath(indexPath)
+                
+                activityController.popoverPresentationController!.sourceRect = CGRect(
+                    x: 250,
+                    y: 130,
+                    width: 1,
+                    height: 1)
+            }
+
+    
             self.presentViewController(activityController, animated: true, completion: nil)
         })
         

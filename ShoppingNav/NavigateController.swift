@@ -20,8 +20,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("\(lantitude)")
         print("\(lontitude)")
         self.view.autoresizingMask = ([UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight])
-        self.view.backgroundColor = UIColor.blueColor()
-        let arrowImageView: UIImageView = UIImageView(frame: CGRectMake(100, 200, 100, 100))
+        self.view.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
+        let arrowImageView: UIImageView = UIImageView(frame: CGRectMake(200, 400, 200, 200))
         arrowImageView.image = UIImage(named: "arrow.png")
         self.view.addSubview(arrowImageView)
         arrowImageView.center = self.view.center

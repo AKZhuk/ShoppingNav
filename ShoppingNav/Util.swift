@@ -23,31 +23,33 @@ class Util : NSObject, NSFetchedResultsControllerDelegate{
         return(deleteActionColor,shareActionColor,editActionColor)
     }
     
-    class func requestDB(entity: String, format:Session ,formatKey: Session, sessionController: SessionTableViewController) -> Array<Image>{
-        var images: [Image] = []
-        let fetchRequest = NSFetchRequest(entityName: entity)
-        let ImageWishListPredicate = NSPredicate(format: "\(format) = %@", formatKey)
-        fetchRequest.predicate = ImageWishListPredicate
-        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-            sessionController.fetchResultController.delegate = sessionController
-            
-            do {
-                try sessionController.fetchResultController.performFetch()
-               
-
-                var images = sessionController.fetchResultController.fetchedObjects as! [Image]
-                print(images[2].session)
-            } catch {
-                print(error)
-            }
-        }
-        var lol: [String] = []
-        lol = ["ololo","lol","ololo"]
-        for l in lol { print(l)}
-        for _ in images{ print(images[2].id) }
-   return images }
+    
+//    
+//    class func requestDB(entity: String, format:Session ,formatKey: Session, sessionController: SessionTableViewController) -> Array<Image>{
+//        var images: [Image] = []
+//        let fetchRequest = NSFetchRequest(entityName: entity)
+//        let ImageWishListPredicate = NSPredicate(format: "\(format) = %@", formatKey)
+//        fetchRequest.predicate = ImageWishListPredicate
+//        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+//        fetchRequest.sortDescriptors = [sortDescriptor]
+//        
+//        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+//            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+//            sessionController.fetchResultController.delegate = sessionController
+//            
+//            do {
+//                try sessionController.fetchResultController.performFetch()
+//               
+//
+//                var images = sessionController.fetchResultController.fetchedObjects as! [Image]
+//                print(images[2].session)
+//            } catch {
+//                print(error)
+//            }
+//        }
+//        var lol: [String] = []
+//        lol = ["ololo","lol","ololo"]
+//        for l in lol { print(l)}
+//        for _ in images{ print(images[2].id) }
+//   return images }
 }
